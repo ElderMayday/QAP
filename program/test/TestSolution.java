@@ -1,9 +1,13 @@
 import org.junit.*;
+import program.Problem;
+import program.Solution;
+
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 
-import static org.junit.Assert.*;
+
 
 /**
  * Created by Aldar on 08-May-18.

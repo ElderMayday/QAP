@@ -1,4 +1,6 @@
 import org.junit.*;
+import program.Problem;
+
 import static org.junit.Assert.*;
 
 import java.io.File;

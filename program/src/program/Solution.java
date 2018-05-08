@@ -1,3 +1,6 @@
+package program;
+
+
 /**
  * Created by Aldar on 08-May-18.
  */
@@ -7,7 +10,7 @@ public class Solution
     public final int[] location;      // a.k.a. psi, array of indices of locations assigned to the facilities
     protected final boolean[] locationIsTaken;   // array of flag whether the corresponding location was taken
     protected final boolean[] facilityIsTaken;   // array of flag whether the corresponding facility was taken
-    protected int numUnassigned;               // number of unassigned locations/facilities
+    public int numUnassigned;               // number of unassigned locations/facilities
     public int objective;                      // is not updated until construction is finished or updateObjective() is called
 
     public Solution(Problem problem)
