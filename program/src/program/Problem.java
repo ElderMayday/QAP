@@ -11,8 +11,8 @@ import java.util.Scanner;
 public class Problem
 {
     public final int size;
-    public final int[][] distance;
-    public final int[][] flow;
+    public final int[][] distance;  // a.k.a. a
+    public final int[][] flow;      // a.k.a. b
 
 
     /**

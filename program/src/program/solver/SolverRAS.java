@@ -11,9 +11,9 @@ import java.util.List;
  */
 public class SolverRAS extends Solver
 {
-    public SolverRAS(Problem problem)
+    public SolverRAS(Problem problem, double pheromoneValue, double probabilityBest)
     {
-        super(problem);
+        super(problem, pheromoneValue, probabilityBest);
     }
 
     @Override

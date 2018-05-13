@@ -28,7 +28,7 @@ public class TestSolver
     @Test
     public void testSolver()
     {
-        Solver solver = new SolverRAS(problem);
+        Solver solver = new SolverRAS(problem, 1.0 / 10117172.0, 0.5);
 
         Solution solution = solver.solve().get(0);
 
