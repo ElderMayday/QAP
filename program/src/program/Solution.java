@@ -1,6 +1,10 @@
 package program;
 
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -34,6 +38,35 @@ public class Solution
             locationIsTaken[i] = false;
 
         objective = -1;
+    }
+
+    public Solution(Solution solution)
+    {
+        this.problem = solution.problem;
+
+        int size = problem.size;
+
+        this.location = Arrays.copyOf(solution.location, size);
+        this.locationIsTaken = Arrays.copyOf(solution.locationIsTaken, size);
+        this.facilityIsTaken = Arrays.copyOf(solution.facilityIsTaken, size);
+        this.numUnassigned = solution.numUnassigned;
+        this.objective = solution.objective;
+    }
+
+
+    public static List<Solution> deepCopyList(List<Solution> solutions)
+    {
+        List<Solution> result = new ArrayList<Solution>();
+
+        for (int i = 0; i < solutions.size(); i++)
+            result.add(new Solution(solutions.get(i)));
+
+        return result;
+    }
+
+    public static Solution chooseBest(Solution one, Solution two)
+    {
+        return one.objective < two.objective ? one : two;
     }
 
 
@@ -151,6 +184,15 @@ public class Solution
         return best;
     }
 
+
+    /**
+     * Checks if all given solutions are equal
+     * @param solutions
+     */
+    public static void checkIfAllAreEqual(List<Solution> solutions)
+    {
+        throw new NotImplementedException();
+    }
 
     /**
      * Determines the difference of the objective values in case if i-th and j-th facilities are swapped.

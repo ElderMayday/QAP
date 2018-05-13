@@ -62,17 +62,33 @@ public class SolverRAS extends Solver
 
         pheromoneMap.initialize(problem.size, 1.0 / bestQuality);
 
+        boolean intensificationIsActivated = true;
+
         while (System.currentTimeMillis() - startTime < runtime)  // until runtime is not finished
         {
-            for (Solution solution : solutions)
+            // solution manipulation
+
+            List<Solution> newSolutions = Solution.deepCopyList(solutions);
+
+            for (Solution solution : newSolutions)
             {
                 modifySolution(solution);
                 localSearch.search(solution);
             }
+
+            if (intensificationIsActivated)
+                for (int i = 0; i < solutions.size(); i++)
+                    solutions.set(i, Solution.chooseBest(solutions.get(i), newSolutions.get(i)));
+            else
+                solutions = newSolutions;
         }
 
         return solutions;
     }
+
+
+
+
 
 
     protected void modifySolution(Solution solution)
