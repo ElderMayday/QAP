@@ -49,46 +49,8 @@ public class LocalSearchIdsia extends LocalSearch
                 int toFacility = listTo.get(indexTo);   // a.k.a j
                 listTo.remove(indexTo);
 
-                tryExchange(solution, indexFrom, indexTo);
+                solution.tryExchange(indexFrom, indexTo);
             }
         }
-    }
-
-    /**
-     * Performs an exchange of pi_i and pi_j in case if it improves the objective
-     * @param solution
-     * @param i facility #1
-     * @param j facility #2
-     */
-    public void tryExchange(Solution solution, int i, int j)
-    {
-        Problem problem = solution.problem;
-
-        int[][] a = problem.distance;
-        int[][] b = problem.flow;
-
-        // optimized computation of delta (instead of full recomputation)
-
-        int pi_i = solution.location[i];  // location #1
-        int pi_j = solution.location[j];  // location #2
-
-        long delta = (b[i][j] - b[j][i]) * (a[pi_i][pi_j] - a[pi_j][pi_i]);  // minus delta actually
-
-        for (int k = 0; k < problem.size; k++)
-            if ((k != i) && (k != j))
-            {
-                int pi_k = solution.location[k];
-
-                delta += b[i][k] * (a[pi_i][pi_k] - a[pi_j][pi_k]) + b[k][i] * (a[pi_k][pi_i] - a[pi_k][pi_j])
-                        + b[j][k] * (a[pi_j][pi_k] - a[pi_i][pi_k]) + b[k][j] * (a[pi_k][pi_j] - a[pi_k][pi_i]);
-            }
-
-         if (delta > 0)  // if such local move is profitable then perform it
-         {
-             solution.location[i] = pi_j;
-             solution.location[j] = pi_i;
-
-             solution.objective -= delta;
-         }
     }
 }

@@ -17,37 +17,30 @@ public abstract class Solver
 {
     protected final PheromoneMap pheromoneMap;
     protected final Problem problem;
+    protected final int antNum;                     // a.k.a. m
+    protected final long runtime;                   // = number of facilities in seconds
 
-    protected final double probabilityBest;
 
-
-    public Solver(Problem problem, double pheromoneValue, double probabilityBest)
+    public Solver(Problem problem, int antNum)
     {
+        if (problem == null)
+            throw new IllegalArgumentException("Problem must be specified");
+
         this.problem = problem;
+        this.pheromoneMap = new PheromoneMap();
 
-        this.pheromoneMap = new PheromoneMap(problem, pheromoneValue);
+        if (antNum < 1)
+            throw new IllegalArgumentException("Ant number must be positive");
 
-        if ((probabilityBest < 0.0) || (probabilityBest > 1.0))
-            throw new IllegalArgumentException("Wrong probability best value");
+        this.antNum = antNum;
 
-        this.probabilityBest = probabilityBest;
+        this.runtime = problem.size * 1000;
     }
 
 
 
-    public abstract List<Solution> solve();
+    public abstract List<Solution> solve() throws Exception;
 
-
-    /**
-     * Generates an initial solution for all Solver implementations
-     * @return
-     */
-    protected Solution generateInitialSolution()
-    {
-        Solution solution = generateRandomSolution();
-
-        return solution;
-    }
 
 
     /**
@@ -71,28 +64,5 @@ public abstract class Solver
         }
 
         return solution;
-    }
-
-
-    protected void modifySolution(Solution solution)
-    {
-        for (int round = 0; round < problem.size; round++)   // number or rounds is equal to the problem size
-        {
-            if (Main.random.nextDouble() < probabilityBest)  // if chooses exploiting policy
-                swapExploiting(solution);
-            else                                             // if chooses exploring policy
-                swapExploring(solution);
-        }
-    }
-
-    protected void swapExploiting(Solution solution)
-    {
-        int index1 = Main.random.nextInt(problem.size);
-    }
-
-
-    protected void swapExploring(Solution solution)
-    {
-        throw new NotImplementedException();
     }
 }

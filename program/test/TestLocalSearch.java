@@ -57,9 +57,9 @@ public class TestLocalSearch
 
             // test that optimized objective recomputation is correct
 
-            double objective = solution.objective;
+            long objective = solution.objective;
             solution.updateObjective();
-            assertEquals(solution.objective, objective, 0.0001);
+            assertEquals(solution.objective, objective);
         }
         catch (Exception e)
         {

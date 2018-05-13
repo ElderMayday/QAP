@@ -1,11 +1,13 @@
 import org.junit.*;
 import program.Problem;
 import program.Solution;
+import program.localSearch.LocalSearchIdsia;
 import program.solver.Solver;
 import program.solver.SolverRAS;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -16,30 +18,47 @@ import static org.junit.Assert.*;
  */
 public class TestSolver
 {
-
     private Problem problem;
 
     @Before
     public void before() throws FileNotFoundException
     {
-        problem = new Problem(new File("QAP_instances/bur26g.dat"));
+        problem = new Problem(new File("QAP_instances/chr15b.dat")); // best found quality 10.117.172
     }
 
     @Test
     public void testSolver()
     {
-        Solver solver = new SolverRAS(problem, 1.0 / 10117172.0, 0.5);
+        Solver solver = new SolverRAS(problem, 5, new LocalSearchIdsia(), 0.0, 2.0);
 
-        Solution solution = solver.solve().get(0);
+        List<Solution> solutions = null;
+        try
+        {
+            solutions = solver.solve();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+            assertTrue(false);
+        }
 
-        // test that all cities must be visited
 
-        boolean[] visited = new boolean[solution.location.length];
+        for (Solution solution : solutions)
+        {
+            // test that all cities must be visited
 
-        for (int i = 0; i < solution.location.length; i++)
-            visited[solution.location[i]] = true;
+            boolean[] visited = new boolean[solution.location.length];
 
-        for (int i = 0; i < visited.length; i++)
-            assertEquals(true, visited[i]);
+            for (int i = 0; i < solution.location.length; i++)
+                visited[solution.location[i]] = true;
+
+            for (int i = 0; i < visited.length; i++)
+                assertEquals(true, visited[i]);
+
+            // test that optimized objective recomputation is correct
+
+            long objective = solution.objective;
+            solution.updateObjective();
+            assertEquals(solution.objective, objective);
+        }
     }
 }

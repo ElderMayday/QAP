@@ -8,17 +8,12 @@ public class PheromoneMap
     public double[][] pheromone;   // pheromone trail value of assigning i-th facility to j-th location
 
 
-    /**
-     * Initializes the pheromone map with a single value for all solution components for the specified problem instance
-     * @param problem
-     * @param pheromoneValue
-     */
-    public PheromoneMap(Problem problem, double pheromoneValue)
+    public void initialize(int size, double pheromoneValue)
     {
-        pheromone = new double[problem.size][problem.size];
+        pheromone = new double[size][size];
 
-        for (int i = 0; i < problem.size; i++)
-            for (int j = 0; j < problem.size; j++)
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++)
                 pheromone[i][j] = pheromoneValue;
     }
 }

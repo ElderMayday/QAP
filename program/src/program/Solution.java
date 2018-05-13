@@ -1,15 +1,19 @@
 package program;
 
 
+import java.util.List;
+
 /**
+ * Solution for QAP problem instance
+ * Some fields are public, so external classes must also care about its consistency
  * Created by Aldar on 08-May-18.
  */
 public class Solution
 {
     public final Problem problem;     // the problem for which this solution is
     public final int[] location;      // a.k.a. psi, array of indices of locations assigned to the facilities
-    protected final boolean[] locationIsTaken;   // array of flag whether the corresponding location was taken
-    protected final boolean[] facilityIsTaken;   // array of flag whether the corresponding facility was taken
+    protected final boolean[] locationIsTaken;   // array of flags whether the corresponding location was taken
+    protected final boolean[] facilityIsTaken;   // array of flags whether the corresponding facility was taken
     public int numUnassigned;               // number of unassigned locations/facilities
     public int objective;                      // is not updated until construction is finished or updateObjective() is called
 
@@ -124,5 +128,102 @@ public class Solution
     public boolean isComplete()
     {
         return numUnassigned == 0;
+    }
+
+
+    /**
+     * Finds the best solution among the given list of solutions
+     * @param solutions
+     * @return
+     */
+    public static Solution findBestSolution(List<Solution> solutions)
+    {
+        Solution best = solutions.get(0);
+
+        for (int i = 1; i < solutions.size(); i++)
+        {
+            Solution next = solutions.get(i);
+
+            if (next.objective < best.objective)
+                best = next;
+        }
+
+        return best;
+    }
+
+
+    /**
+     * Determines the difference of the objective values in case if i-th and j-th facilities are swapped.
+     * Is done on O(n) time
+     * @param i
+     * @param j
+     * @return
+     */
+    public long delta(int i, int j)
+    {
+        int[][] a = problem.distance;
+        int[][] b = problem.flow;
+
+        // optimized computation of delta (instead of full recomputation)
+
+        int pi_i = location[i];  // location #1
+        int pi_j = location[j];  // location #2
+
+        long delta = (b[i][j] - b[j][i]) * (a[pi_i][pi_j] - a[pi_j][pi_i]);  // minus delta actually
+
+        for (int k = 0; k < problem.size; k++)
+            if ((k != i) && (k != j))
+            {
+                int pi_k = location[k];
+
+                delta += b[i][k] * (a[pi_i][pi_k] - a[pi_j][pi_k]) + b[k][i] * (a[pi_k][pi_i] - a[pi_k][pi_j])
+                        + b[j][k] * (a[pi_j][pi_k] - a[pi_i][pi_k]) + b[k][j] * (a[pi_k][pi_j] - a[pi_k][pi_i]);
+            }
+
+        return delta;
+    }
+
+
+    /**
+     * Performs an exchange of pi_i and pi_j in case if it improves the objective
+     * @param i facility #1
+     * @param j facility #2
+     */
+    public void tryExchange(int i, int j)
+    {
+        long delta = delta(i, j);
+
+        if (delta > 0)  // if such local move is profitable then perform it
+        {
+            int buffer = location[i];
+            location[i] = location[j];
+            location[j] = buffer;
+
+            objective -= delta;
+        }
+    }
+
+    /**
+     * Performs an exchange of pi_i and pi_j in any case
+     * @param i facility #1
+     * @param j facility #2
+     */
+    public void doExchange(int i, int j)
+    {
+        long delta = delta(i, j);
+
+        int buffer = location[i];
+        location[i] = location[j];
+        location[j] = buffer;
+
+        objective -= delta;
+    }
+
+
+
+    @Override
+    public String toString()
+    {
+        return "obj=" + objective;
     }
 }
