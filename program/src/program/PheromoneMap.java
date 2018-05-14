@@ -16,4 +16,28 @@ public class PheromoneMap
             for (int j = 0; j < size; j++)
                 pheromone[i][j] = pheromoneValue;
     }
+
+
+    /**
+     * Perform linear pheromone trail evaporation
+     * @param evaporationRemains
+     */
+    public void evaporate(double evaporationRemains)
+    {
+        for (int i = 0; i < pheromone.length; i++)
+            for (int j = 0; j < pheromone.length; j++)
+                pheromone[i][j] *= evaporationRemains;
+    }
+
+
+    /**
+     * Perform deposit of solution components of a given solution by a given constant value
+     * @param solution
+     * @param addPheromone
+     */
+    public void deposit(Solution solution, double addPheromone)
+    {
+        for (int i = 0; i < solution.location.length; i++)
+            pheromone[i][solution.location[i]] += addPheromone;
+    }
 }

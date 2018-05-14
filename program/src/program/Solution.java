@@ -169,7 +169,7 @@ public class Solution
      * @param solutions
      * @return
      */
-    public static Solution findBestSolution(List<Solution> solutions)
+    public static Solution chooseBestInList(List<Solution> solutions)
     {
         Solution best = solutions.get(0);
 
@@ -185,18 +185,11 @@ public class Solution
     }
 
 
-    /**
-     * Checks if all given solutions are equal
-     * @param solutions
-     */
-    public static void checkIfAllAreEqual(List<Solution> solutions)
-    {
-        throw new NotImplementedException();
-    }
 
     /**
      * Determines the difference of the objective values in case if i-th and j-th facilities are swapped.
-     * Is done on O(n) time
+     * Is done in O(n) time
+     * Use this for pair swapping, because of lack of necessity to recompute the objective in O(n^2)
      * @param i
      * @param j
      * @return
@@ -205,8 +198,6 @@ public class Solution
     {
         int[][] a = problem.distance;
         int[][] b = problem.flow;
-
-        // optimized computation of delta (instead of full recomputation)
 
         int pi_i = location[i];  // location #1
         int pi_j = location[j];  // location #2

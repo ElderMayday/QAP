@@ -19,9 +19,10 @@ public abstract class Solver
     protected final Problem problem;
     protected final int antNum;                     // a.k.a. m
     protected final long runtime;                   // = number of facilities in seconds
+    protected final double evaporationRemains;
 
 
-    public Solver(Problem problem, int antNum)
+    public Solver(Problem problem, int antNum, double evaporationRemains)
     {
         if (problem == null)
             throw new IllegalArgumentException("Problem must be specified");
@@ -35,6 +36,11 @@ public abstract class Solver
         this.antNum = antNum;
 
         this.runtime = problem.size * 1000;
+
+        if ((evaporationRemains < 0.0) || (evaporationRemains > 1.0))
+            throw new IllegalArgumentException("Evaporation value is wrong");
+
+        this.evaporationRemains = evaporationRemains;
     }
 
 

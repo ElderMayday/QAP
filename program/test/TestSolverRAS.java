@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 /**
  * Created by Aldar on 08-May-18.
  */
-public class TestSolver
+public class TestSolverRAS
 {
     private Problem problem;
 
@@ -29,7 +29,7 @@ public class TestSolver
     @Test
     public void testSolver()
     {
-        Solver solver = new SolverRAS(problem, 5, new LocalSearchIdsia(), 0.0, 2.0);
+        Solver solver = new SolverRAS(problem, 5, 0.8, new LocalSearchIdsia(), 0.0, 2.0, 3, 1000);
 
         List<Solution> solutions = null;
         try
