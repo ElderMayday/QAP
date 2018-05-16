@@ -1,0 +1,1 @@
+/home/asaranov/bin/jdk1.8.0_161/bin/java -Xmx100m -jar qap.jar "$@"

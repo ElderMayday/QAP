@@ -1,0 +1,1 @@
+/home/asaranov/R/x86_64-redhat-linux-gnu-library/2.15/irace/bin/irace --scenario scenario.txt

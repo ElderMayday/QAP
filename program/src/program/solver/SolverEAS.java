@@ -18,6 +18,9 @@ public class SolverEAS extends Solver
     {
         super(problem, antNum, evaporationRemains, localSearch, roundsToReinitialize, probabilityBestInModification, selectionPower, factorQ);
 
+        if (numberOfElitist < 1)
+            throw new IllegalArgumentException("Wrong number of elitist ants");
+
         this.numberOfElitist = numberOfElitist;
     }
 

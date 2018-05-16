@@ -1,0 +1,14 @@
+
+parameterFile = "./parameters.txt"
+execDir = "./execution"
+forbiddenFile = "./forbidden.txt"
+targetRunner = "./target.sh"
+trainInstancesDir = "./QAP_instances"
+digits = 2
+
+
+
+nbIterations = 10
+minNbSurvival = 5
+maxExperiments = 10000
+nbConfigurations = 10

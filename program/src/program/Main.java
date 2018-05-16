@@ -32,34 +32,27 @@ public class Main
             {
                 long startTime = System.currentTimeMillis();  // start clock
 
-                Problem problem = new Problem(new File(conf.path));
+                Problem problem = new Problem(new File(conf.path));  // read the instance
 
                 if (conf.seed != -1)
-                    random = new Random(conf.seed);   // set seed if specified
+                    random = new Random(conf.seed);    // set seed if specified
 
-                if (conf.algorithm == 0)   // define the algorithm
-                    solver = new SolverEAS(problem, conf.antNum, conf.evaporationRemains, new LocalSearchIdsia(),
-                            conf.probabilityBestInModification, conf.selectionPower, conf.numberOfElitist,
-                            conf.roundsToReinitialize, conf.factorQ);
-                else
-                    solver = new SolverRAS(problem, conf.antNum, conf.evaporationRemains, new LocalSearchIdsia(),
-                            conf.probabilityBestInModification, conf.selectionPower, conf.numberOfDepositing,
-                            conf.roundsToReinitialize, conf.factorQ);
+                solver = defineSolver(problem, conf);  // define the algorithm according to the given configuration
 
                 Solution solution = solver.solve();
 
-                outputSolution(solution, conf.outputPath);
+                outputSolution(solution, conf.outputPath);    // output solution into a file if specified
 
                 long stopTime = System.currentTimeMillis();   // end clock
                 long elapsedTime = stopTime - startTime;
 
-                if (conf.mode == 0)  // for irace output with time
+                if (conf.mode == 0)  // for irace: output objective value with total runtime
                 {
                     Locale.setDefault(Locale.US);
                     System.out.println(solution.objective + " " + String.format("%1$.2f", elapsedTime / 1000.0));
                 }
 
-                if (conf.mode == 1)  // for custom output the solution
+                if (conf.mode == 1)  // for custom: output the solution om screen
                     System.out.println(solution.toString());
             }
         }
@@ -70,7 +63,24 @@ public class Main
     }
 
 
-    public static void outputSolution(Solution solution, String outputPath) throws FileNotFoundException, UnsupportedEncodingException
+    private static Solver defineSolver(Problem problem, Configuration conf)
+    {
+        Solver solver = null;
+
+        if (conf.algorithm == 0)   // define the algorithm
+            solver = new SolverEAS(problem, conf.antNum, conf.evaporationRemains, new LocalSearchIdsia(),
+                    conf.probabilityBestInModification, conf.selectionPower, conf.numberOfElitist,
+                    conf.roundsToReinitialize, conf.factorQ);
+        else
+            solver = new SolverRAS(problem, conf.antNum, conf.evaporationRemains, new LocalSearchIdsia(),
+                    conf.probabilityBestInModification, conf.selectionPower, conf.numberOfDepositing,
+                    conf.roundsToReinitialize, conf.factorQ);
+
+        return solver;
+    }
+
+
+    private static void outputSolution(Solution solution, String outputPath) throws FileNotFoundException, UnsupportedEncodingException
     {
         if (outputPath != null)
         {
