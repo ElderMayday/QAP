@@ -11,15 +11,12 @@ import java.util.List;
  */
 public class SolverEAS extends Solver
 {
-    protected int numberOfElitist;
+    protected int numberOfElitist;   // a.k.a. sigma
 
     public SolverEAS(Problem problem, int antNum, double evaporationRemains, LocalSearch localSearch,
                      double probabilityBestInModification, double selectionPower, int numberOfElitist, int roundsToReinitialize, double factorQ)
     {
         super(problem, antNum, evaporationRemains, localSearch, roundsToReinitialize, probabilityBestInModification, selectionPower, factorQ);
-
-        if ((numberOfElitist < 0) || (numberOfElitist > antNum))
-            throw new IllegalArgumentException("Wrong number of elitist ants");
 
         this.numberOfElitist = numberOfElitist;
     }

@@ -257,6 +257,11 @@ public class Solution
     @Override
     public String toString()
     {
-        return "obj=" + objective;
+        String result = "obj=" + objective + " ";
+
+        for (int i = 0; i < location.length; i++)
+            result += i + "-" + location[i] + " ";
+
+        return result;
     }
 }
