@@ -6,6 +6,9 @@
 \usepackage{datetime}
 \usepackage{mathtools}
 
+% multi-line equations
+\usepackage{amsmath}
+
 
 % for listings
 \usepackage{listings}
@@ -32,26 +35,100 @@
 \maketitle
 \newpage
 
+% TODO
+% spell
+% cite
+
 \section{Implementation}
 
-In the literature many different methods are proposed and researched including various implementations of the simulated annealing, taboo search, hybrid genetic-taboo search. However, for this project an algorithm known as Hybrid Ant System for the Quadratic Assignment Problem (HAS-QAP) was used as it was propose by Gambardella and Dorigo in \cite{Gambardella}. As all the ACO algorithms it uses the notion of solution construction biasing by means of pheromone trails, deposited by ants.
+In the literature many different methods are proposed and researched including various implementations of the simulated annealing, taboo search, hybrid genetic-taboo search. However, for this project an algorithm known as Hybrid Ant System for the Quadratic Assignment Problem (HAS-QAP) was used as it was proposed by Gambardella and Dorigo in \cite{Gambardella}. As all the ACO algorithms it uses the notion of solution construction biasing by means of pheromone trails, deposited by ants. The high-level outline of HAS-QAP is shown in Figure \ref{lst:has-qap}. It was implemented in two versions - with Rank-based Ant System and Elitist Ant System as different pheromone trail update techniques.
+
+Let $n$ be the number of facilities/locations, i.e. the size of a problem. Every solution of a QAP problem is a permutation $\psi$ of an integer sequence from $1$ to $n$.
+
+The HAS-QAP includes such components as:
+
+\begin{itemize}
+\item Random solution generation
+\item Local Search
+\item Pheromone trail swaps
+\item Intensification
+\item Pheromone update
+\item Diversification
+\end{itemize}
+
 
 \begin{minipage}[c]{0.95\textwidth}
-\begin{lstlisting}[caption={General ACO pseudo-code}, label={lst:aco},mathescape]
-procedure ACO-Metaheuristic
-generate m random permutations $\pi^1$,...,$\pi^m$.
-[optionally] improve $\pi^1$,...,$\pi^m$ by local search
+\begin{lstlisting}[caption={HAS-QAP pseudo-code}, label={lst:has-qap},mathescape]
+procedure HAS-QAP
+generate m random permutations $\psi^1$,...,$\psi^m$.
+[optional] improve $\psi^1$,...,$\psi^m$ by local search
 let $pi^*$ be the best solution
 initialize the pheromone trail matrix T
 activate intensification
-for i=1 to $I^{max}$
+
+while (there is time left)
 	for k from 1 to m
-		$\hat{\pi}^k$ = PheromoneTrailSwaps($\pi^k$)
+		$\hat{\psi}^k$ = PheromoneTrailSwaps($\psi^k$)
+		[optional] improve $\hat{\psi}^k$ by local search to get $\tilde{\psi}^k$
 	end
+	
+	for k from 1 to m
+		if intensification is active then
+			$\psi^k$ = best($\psi^k$;$\tilde{\psi}^k$)		
+			if none of $\psi^k$ changed then
+				disable intensification
+		else
+			$\psi^k$ = $\tilde{\psi}^k$
+	end
+	
+	if exists $\tilde{\psi}^k$ better then $\psi^*$
+		update the new best $\psi^*$ = $\tilde{\psi}^k$
+		activate intensification
+	end
+	
+	update the pheromone trail matrix
+	
+	if S iterations in a row are not improving then
+		perform diversification
 end
 \end{lstlisting}
 \end{minipage}
 
+
+Some micro-optimization were applied to the original version of HAS-QAP such as reorganizing conditional branches. For example, we extracted the conditional block on the line 15 outside the loop to avoid redundant condition checks.
+
+\subsection{Random solution}
+Is used in the initializing section of the algorithm. Generate $m$ random solutions. In out implementation, the algorithm takes the facilities one by one and assigns it to one of the free locations according to random uniform rule. This is an exploration step.
+
+\subsection{Local Search}
+
+The implemented local search is based on sequential random check of all pairs $i$ and $j$ and performing swaps of location between the i-th and j-th facilities, in case if these swaps are profitable. For this we compute the difference of objective values before the swap and after $\Delta$. Instead of full objective value recomputation in $O(n^2)$, one can compute $\Delta$ value in an optimized $O(n)$ way.
+
+
+\begin{align*}
+\Delta(\psi,i,j) = (b_{ij} - b_{ji}) \times (a_{\pi_i\pi_j} - a_{\pi_j\pi_i}) + \sum_{k = 1}^{n} [b_{ik} \times (a_{\pi_i\pi_k} - a_{\pi_j\pi_k}) \\+ b_{ki} \times (a_{\pi_k\pi_i} - a_{\pi_k\pi_j}) 
+ + b_{jk} \times (a_{\pi_j\pi_k} - a_{\pi_i\pi_k}) + b_{kj} \times (a_{\pi_k\pi_j} - a_{\pi_k\pi_i})]
+\label{eq:delta}
+\end{align*}
+
+\begin{minipage}[c]{0.95\textwidth}
+\begin{lstlisting}[caption={Local Search pseudo-code}, label={lst:local-search},mathescape]
+procedure LocalSearch(solution $\psi$)
+$I$ = $\emptyset$
+while ($|I| < n$)
+	pick $i$ uniformly randomly, $i \notin I$
+	$J=\{i\}$
+	while ($|J| < n$)
+		pick $j$ uniformly randomly, $j \notin J$
+		if ($\Delta(\psi, i, j) < 0$)
+			exchange $\psi_i$ and $\psi_j$
+			$J = J \cup \{j\}$
+		end
+		$I = I \cup \{i\}$
+	end
+end
+\end{lstlisting}
+\end{minipage}
 
 \bibliographystyle{plain}
 \bibliography{ref}
