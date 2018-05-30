@@ -1,0 +1,476 @@
+*******************************************************************************
+* irace: An implementation in R of Iterated Race
+* Version: 2.4.1844
+* Copyright (C) 2010-2017
+* Manuel Lopez-Ibanez     <manuel.lopez-ibanez@manchester.ac.uk>
+* Jeremie Dubois-Lacoste  
+* Leslie Perez Caceres    <leslie.perez.caceres@ulb.ac.be>
+*
+* This is free software, and you are welcome to redistribute it under certain
+* conditions.  See the GNU General Public License for details. There is NO
+* WARRANTY; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+*
+* irace builds upon previous code from the race package:
+*
+* race: Racing methods for the selection of the best
+* Copyright (C) 2003 Mauro Birattari
+*******************************************************************************
+# installed at: /home/asaranov/R/x86_64-redhat-linux-gnu-library/2.15/irace
+# called with: --scenario scenario.txt
+# 1 expression(s) specifying forbidden configurations read from '/home/asaranov/QAP/irace-ras-ls/forbidden.txt'
+# 2018-05-29 20:04:12 CEST: Initialization
+# Elitist race
+# Elitist new instances: 1
+# Elitist limit: 2
+# nbIterations: 10
+# minNbSurvival: 5
+# nbParameters: 7
+# seed: 865346224
+# confidence level: 0.95
+# budget: 10000
+# mu: 5
+# deterministic: FALSE
+
+# 2018-05-29 20:04:12 CEST: Iteration 1 of 10
+# experimentsUsedSoFar: 0
+# remainingBudget: 10000
+# currentBudget: 1000
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|          1|         10|          1|    31410.00000|         10|00:02:02|   NA|  NA|    NA|
+|x|          2|         10|          1|    15713.00000|         20|00:02:42|+1.00|1.00|0.0000|
+|x|          3|         10|          1|    3179770.000|         30|00:04:22|+0.00|0.33|0.3000|
+|x|          4|         10|          2|    2998324.500|         40|00:05:53|-0.14|0.14|0.5091|
+|=|          5|         10|          2|    2400044.000|         50|00:03:22|+0.02|0.22|0.5438|
+|=|          6|         10|          3|    2009482.000|         60|00:08:23|+0.03|0.19|0.6057|
+|=|          7|         10|          2|    1722043.429|         70|00:04:42|-0.03|0.12|0.6734|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:           2    mean value:     1722043.429
+Description of the best configuration:
+  .ID.        localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end .PARENT.
+2    2 local-search-idsia       ras 88 0.83               8474 0.67 1.01    1.68 15 end       NA
+
+# 2018-05-29 20:35:42 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+         localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+2 local-search-idsia       ras 88 0.83               8474 0.67 1.01    1.68 15 end
+3 local-search-idsia       ras 27 0.56               6081 0.47 2.75    1.40  9 end
+6 local-search-idsia       ras  8 0.74               1792 0.64 0.32    1.66  5 end
+1 local-search-idsia       ras 30 0.06               7950 0.73 2.25    2.47 12 end
+5 local-search-idsia       ras 48 0.73               9171 0.10 2.15    2.50  2 end
+# 2018-05-29 20:35:42 CEST: Iteration 2 of 10
+# experimentsUsedSoFar: 70
+# remainingBudget: 9930
+# currentBudget: 1103
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|          8|         10|          2|    493662.0000|         10|00:02:52|   NA|  NA|    NA|
+|x|          4|         10|          2|    1473825.000|         15|00:02:56|+0.13|0.57|1.0762|
+|x|          6|         10|          2|    998843.3333|         20|00:04:11|+0.03|0.35|0.8743|
+|x|          5|         10|          2|    750863.0000|         25|00:01:41|+0.04|0.28|0.8702|
+|=|          7|         10|          2|    601731.2000|         30|00:02:21|+0.04|0.23|0.8993|
+|=|          2|         10|          2|    501445.3333|         35|00:01:21|+0.03|0.19|0.7495|
+|=|          1|         10|          2|    434297.4286|         40|00:01:01|+0.03|0.17|0.6425|
+|=|          3|         10|          2|    1568495.750|         45|00:02:11|+0.04|0.16|0.6557|
+|=|          9|         10|          2|    1394521.111|         55|00:02:22|+0.03|0.14|0.5850|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:           2    mean value:     1394521.111
+Description of the best configuration:
+  .ID.        localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end .PARENT.
+2    2 local-search-idsia       ras 88 0.83               8474 0.67 1.01    1.68 15 end       NA
+
+# 2018-05-29 20:56:42 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+          localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+2  local-search-idsia       ras 88 0.83               8474 0.67 1.01    1.68 15 end
+3  local-search-idsia       ras 27 0.56               6081 0.47 2.75    1.40  9 end
+13 local-search-idsia       ras 76 0.73               8057 0.54 2.30    2.83 15 end
+12 local-search-idsia       ras 28 0.22               1717 0.71 1.55    3.59 15 end
+5  local-search-idsia       ras 48 0.73               9171 0.10 2.15    2.50  2 end
+# 2018-05-29 20:56:42 CEST: Iteration 3 of 10
+# experimentsUsedSoFar: 125
+# remainingBudget: 9875
+# currentBudget: 1234
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         10|         10|          2|    7990.000000|         10|00:02:32|   NA|  NA|    NA|
+|x|          5|         10|          2|    7456.000000|         15|00:01:41|+0.00|0.50|0.8757|
+|x|          4|         10|          2|    822966.6667|         20|00:02:56|+0.01|0.34|0.9041|
+|x|          8|         10|          2|    740640.5000|         25|00:01:26|+0.00|0.25|0.8887|
+|=|          9|         10|          2|    593057.2000|         30|00:01:11|+0.00|0.20|0.7132|
+|=|          3|         10|          2|    2078861.667|         35|00:02:11|+0.00|0.17|0.5955|
+|=|          6|         10|          2|    1788864.286|         40|00:04:12|-0.04|0.11|0.6689|
+|=|          1|         10|          2|    1569182.500|         45|00:01:01|-0.03|0.10|0.5820|
+|=|          7|         10|          2|    1395407.111|         50|00:02:21|-0.05|0.07|0.6310|
+|=|          2|         10|          2|    1255868.000|         55|00:01:21|-0.04|0.06|0.5648|
+|=|         11|         10|          2|    1144553.636|         65|00:02:02|-0.04|0.06|0.5112|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:           2    mean value:     1144553.636
+Description of the best configuration:
+  .ID.        localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end .PARENT.
+2    2 local-search-idsia       ras 88 0.83               8474 0.67 1.01    1.68 15 end       NA
+
+# 2018-05-29 21:19:40 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+          localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+2  local-search-idsia       ras 88 0.83               8474 0.67 1.01    1.68 15 end
+12 local-search-idsia       ras 28 0.22               1717 0.71 1.55    3.59 15 end
+16 local-search-idsia       ras 78 0.11               8571 0.87 1.82    0.50  8 end
+3  local-search-idsia       ras 27 0.56               6081 0.47 2.75    1.40  9 end
+13 local-search-idsia       ras 76 0.73               8057 0.54 2.30    2.83 15 end
+# 2018-05-29 21:19:40 CEST: Iteration 4 of 10
+# experimentsUsedSoFar: 190
+# remainingBudget: 9810
+# currentBudget: 1401
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         12|         10|          2|    9507884.000|         10|00:04:22|   NA|  NA|    NA|
+|x|          8|         10|          2|    5000773.000|         15|00:01:26|-0.05|0.48|0.9870|
+|x|          5|         10|          2|    3336156.000|         20|00:01:41|+0.14|0.43|0.8410|
+|x|         10|         10|          2|    2504114.500|         25|00:01:16|-0.08|0.19|1.0161|
+|=|          6|         10|          2|    2013067.600|         30|00:04:11|-0.05|0.16|0.9727|
+|=|          3|         10|          2|    3262203.667|         35|00:02:11|-0.04|0.13|0.7985|
+|=|          9|         10|          2|    2796563.714|         40|00:01:11|-0.03|0.11|0.6775|
+|=|         11|         10|          2|    2450919.500|         45|00:01:01|-0.03|0.10|0.5885|
+|=|          2|         10|          2|    2178596.889|         50|00:01:21|-0.03|0.09|0.5202|
+|=|          7|         10|          2|    1961257.600|         55|00:02:21|-0.03|0.07|0.5563|
+|=|          1|         10|          2|    1785816.909|         60|00:01:01|-0.03|0.06|0.5042|
+|=|          4|         10|          2|    1841497.833|         65|00:02:56|-0.02|0.07|0.5284|
+|=|         13|         10|          2|    1700053.692|         75|00:02:22|-0.01|0.06|0.4875|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:           2    mean value:     1700053.692
+Description of the best configuration:
+  .ID.        localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end .PARENT.
+2    2 local-search-idsia       ras 88 0.83               8474 0.67 1.01    1.68 15 end       NA
+
+# 2018-05-29 21:47:05 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+          localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+2  local-search-idsia       ras 88 0.83               8474 0.67 1.01    1.68 15 end
+3  local-search-idsia       ras 27 0.56               6081 0.47 2.75    1.40  9 end
+12 local-search-idsia       ras 28 0.22               1717 0.71 1.55    3.59 15 end
+16 local-search-idsia       ras 78 0.11               8571 0.87 1.82    0.50  8 end
+13 local-search-idsia       ras 76 0.73               8057 0.54 2.30    2.83 15 end
+# 2018-05-29 21:47:05 CEST: Iteration 5 of 10
+# experimentsUsedSoFar: 265
+# remainingBudget: 9735
+# currentBudget: 1622
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         14|         10|          2|    16.00000000|         10|00:02:42|   NA|  NA|    NA|
+|x|          4|         10|         29|    1224596.000|         15|00:02:56|+0.00|0.50|0.4500|
+|x|          9|         10|         29|    817305.3333|         20|00:01:11|+0.00|0.33|0.3000|
+|x|         12|         10|         29|    2989950.000|         25|00:02:11|+0.00|0.25|0.2250|
+|=|         13|         10|         29|    2392504.800|         30|00:01:11|+0.00|0.20|0.1800|
+|=|          6|         10|         29|    2001897.333|         35|00:04:11|+0.14|0.28|0.2720|
+|=|          2|         10|         29|    1715914.286|         40|00:01:21|+0.12|0.24|0.2371|
+|=|          8|         10|          2|    1563736.750|         45|00:01:26|+0.02|0.14|0.3496|
+|=|          1|         10|          2|    1393478.222|         50|00:01:01|+0.02|0.13|0.3094|
+|=|          3|         10|          2|    2204918.800|         55|00:02:11|+0.01|0.11|0.2775|
+|=|          7|         10|         29|    2004745.455|         60|00:02:21|-0.01|0.08|0.3369|
+|=|         10|         10|          2|    1838531.833|         65|00:01:16|-0.00|0.08|0.3817|
+|=|         11|         10|          2|    1699522.462|         70|00:01:01|-0.00|0.08|0.3518|
+|=|          5|         10|          2|    1578622.429|         75|00:01:41|-0.00|0.07|0.3921|
+|=|         15|         10|          2|    1473842.400|         85|00:03:22|+0.01|0.07|0.4195|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:           2    mean value:     1473842.400
+Description of the best configuration:
+  .ID.        localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end .PARENT.
+2    2 local-search-idsia       ras 88 0.83               8474 0.67 1.01    1.68 15 end       NA
+
+# 2018-05-29 22:17:13 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+          localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+2  local-search-idsia       ras 88 0.83               8474 0.67 1.01    1.68 15 end
+29 local-search-idsia       ras 99 0.81               9450 0.87 0.88    2.16 12 end
+27 local-search-idsia       ras 75 0.56               5555 0.31 1.52    4.75 17 end
+3  local-search-idsia       ras 27 0.56               6081 0.47 2.75    1.40  9 end
+16 local-search-idsia       ras 78 0.11               8571 0.87 1.82    0.50  8 end
+# 2018-05-29 22:17:13 CEST: Iteration 6 of 10
+# experimentsUsedSoFar: 350
+# remainingBudget: 9650
+# currentBudget: 1930
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         16|         10|         27|    5166.000000|         10|00:04:42|   NA|  NA|    NA|
+|x|          6|         10|         29|    27021.00000|         15|00:04:11|-0.65|0.18|1.3176|
+|x|         13|         10|         29|    18922.00000|         20|00:01:11|-0.32|0.12|0.7392|
+|x|          7|         10|         29|    15485.50000|         25|00:02:21|-0.09|0.18|0.6791|
+|=|         10|         10|         29|    14113.60000|         30|00:01:16|-0.05|0.16|0.7253|
+|=|         12|         10|         29|    1596408.667|         35|00:02:11|-0.04|0.14|0.6035|
+|=|          1|         10|         29|    1372837.429|         40|00:01:01|-0.03|0.12|0.5168|
+|=|         11|         10|         29|    1205159.000|         45|00:01:01|-0.03|0.10|0.4519|
+|=|         14|         10|         29|    1071254.222|         50|00:01:21|-0.02|0.09|0.4015|
+|=|          8|         10|         29|    1013761.800|         55|00:01:26|-0.02|0.08|0.4480|
+|=|         15|         10|         29|    922230.9091|         60|00:01:41|+0.00|0.09|0.4744|
+|=|          5|         10|         29|    845955.1667|         65|00:01:41|-0.01|0.08|0.5193|
+|=|          4|         10|         29|    969279.8462|         70|00:02:56|+0.04|0.11|0.5287|
+|=|          2|         10|         29|    900046.7143|         75|00:01:21|+0.03|0.10|0.4927|
+|=|          3|         10|         29|    1473902.533|         80|00:02:11|+0.02|0.09|0.5291|
+|=|          9|         10|         29|    1381953.875|         85|00:01:11|+0.02|0.08|0.4967|
+|=|         17|         10|         29|    1303543.059|         95|00:08:23|+0.02|0.08|0.5211|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          29    mean value:     1303543.059
+Description of the best configuration:
+   .ID.        localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end .PARENT.
+29   29 local-search-idsia       ras 99 0.81               9450 0.87 0.88    2.16 12 end        2
+
+# 2018-05-29 22:57:25 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+          localSearch algorithm   m  rho roundsReinitialize    q    k factorQ  w end
+29 local-search-idsia       ras  99 0.81               9450 0.87 0.88    2.16 12 end
+27 local-search-idsia       ras  75 0.56               5555 0.31 1.52    4.75 17 end
+2  local-search-idsia       ras  88 0.83               8474 0.67 1.01    1.68 15 end
+32 local-search-idsia       ras 100 0.86               9879 0.94 0.83    1.39 11 end
+33 local-search-idsia       ras  65 0.13               7057 0.92 1.86    0.99 10 end
+# 2018-05-29 22:57:25 CEST: Iteration 7 of 10
+# experimentsUsedSoFar: 445
+# remainingBudget: 9555
+# currentBudget: 2388
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         18|         10|         38|    491812.0000|         10|00:02:52|   NA|  NA|    NA|
+|x|          3|         10|         38|    4999848.000|         15|00:02:11|-0.24|0.38|1.1257|
+|x|          4|         10|         29|    4150240.667|         20|00:02:56|+0.00|0.33|0.9161|
+|x|         16|         10|         29|    3113976.000|         25|00:02:21|+0.05|0.29|0.9469|
+|=|         12|         10|         29|    4392757.600|         30|00:02:11|+0.04|0.23|0.7482|
+|=|         10|         10|         39|    3661622.333|         35|00:01:16|-0.02|0.15|0.7783|
+|=|          5|         10|         39|    3139522.286|         40|00:01:41|-0.02|0.13|0.6631|
+|=|          8|         10|         39|    2809123.250|         45|00:01:26|-0.00|0.12|0.6989|
+|=|          6|         10|         29|    2502725.111|         50|00:04:11|+0.01|0.12|0.7222|
+|=|         13|         10|         29|    2252725.000|         55|00:01:11|+0.01|0.11|0.6478|
+|=|          1|         10|         29|    2050787.273|         60|00:01:01|+0.01|0.10|0.5873|
+|=|          9|         10|         29|    1880115.333|         65|00:01:11|+0.01|0.09|0.5371|
+|=|          2|         10|         29|    1735492.308|         70|00:01:21|+0.00|0.08|0.4949|
+|=|         14|         10|         29|    1611529.714|         75|00:01:21|+0.00|0.08|0.4588|
+|=|          7|         10|         39|    1504260.400|         80|00:02:21|+0.00|0.07|0.4842|
+|=|         11|         10|         39|    1412207.250|         85|00:01:01|+0.00|0.07|0.4537|
+|=|         17|         10|         39|    1332014.353|         90|00:04:11|-0.01|0.05|0.4835|
+|=|         15|         10|         39|    1258398.111|         95|00:01:41|-0.01|0.05|0.4563|
+|=|         19|         10|         39|    1192646.737|        105|00:02:32|-0.02|0.04|0.4844|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          39    mean value:     1192646.737
+Description of the best configuration:
+   .ID.        localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end .PARENT.
+39   39 local-search-idsia       ras 86 0.79               9474 0.77 0.73    1.55 19 end        2
+
+# 2018-05-29 23:36:29 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+          localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+39 local-search-idsia       ras 86 0.79               9474 0.77 0.73    1.55 19 end
+27 local-search-idsia       ras 75 0.56               5555 0.31 1.52    4.75 17 end
+38 local-search-idsia       ras 82 0.39               5535 0.34 1.48    4.39 13 end
+2  local-search-idsia       ras 88 0.83               8474 0.67 1.01    1.68 15 end
+29 local-search-idsia       ras 99 0.81               9450 0.87 0.88    2.16 12 end
+# 2018-05-29 23:36:29 CEST: Iteration 8 of 10
+# experimentsUsedSoFar: 550
+# remainingBudget: 9450
+# currentBudget: 3150
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         20|         10|         44|    2449934.000|         10|00:05:53|   NA|  NA|    NA|
+|x|          4|         10|         44|    2454133.000|         15|00:02:56|-0.08|0.46|0.5959|
+|x|         11|         10|         44|    1646558.667|         20|00:01:01|-0.04|0.31|0.4986|
+|x|          3|         10|         44|    3611890.000|         25|00:02:11|+0.14|0.35|0.4095|
+|=|         14|         10|         44|    2889515.200|         30|00:01:21|+0.10|0.28|0.3807|
+|=|          7|         10|         39|    2412075.667|         35|00:02:21|+0.06|0.22|0.4813|
+|=|         12|         10|         39|    3425762.571|         40|00:02:11|+0.05|0.18|0.4295|
+|=|         18|         10|         39|    3059361.000|         45|00:01:26|+0.06|0.18|0.4790|
+|=|          8|         10|         38|    2775336.000|         50|00:01:26|-0.02|0.09|0.5867|
+|=|         16|         10|         29|    2497640.800|         55|00:02:21|-0.03|0.07|0.6334|
+|=|         15|         10|         29|    2271211.818|         60|00:01:41|-0.00|0.09|0.6241|
+|=|          6|         10|         29|    2086015.833|         65|00:04:11|-0.01|0.07|0.6616|
+|=|         19|         10|         42|    1927440.769|         70|00:01:16|-0.02|0.06|0.6978|
+|=|          9|         10|         42|    1789961.000|         75|00:01:11|-0.02|0.05|0.6476|
+|=|         17|         10|         42|    1673891.467|         80|00:04:11|-0.04|0.03|0.6791|
+|=|         10|         10|         42|    1569812.375|         85|00:01:16|-0.03|0.03|0.6891|
+|=|         13|         10|         42|    1477630.706|         90|00:01:11|-0.03|0.03|0.6477|
+|=|          5|         10|         42|    1395926.111|         95|00:01:41|-0.02|0.03|0.6584|
+|=|          2|         10|         42|    1322457.158|        100|00:01:21|-0.02|0.03|0.6233|
+|=|          1|         10|         42|    1257904.800|        105|00:01:01|-0.02|0.03|0.5918|
+|=|         21|         10|         42|    1650760.952|        115|00:04:22|-0.02|0.03|0.6087|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          42    mean value:     1650760.952
+Description of the best configuration:
+   .ID.        localSearch algorithm  m rho roundsReinitialize    q   k factorQ  w end .PARENT.
+42   42 local-search-idsia       ras 81 0.2               4051 0.35 1.5       4 14 end       38
+
+# 2018-05-30 00:23:06 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+          localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+42 local-search-idsia       ras 81 0.20               4051 0.35 1.50    4.00 14 end
+38 local-search-idsia       ras 82 0.39               5535 0.34 1.48    4.39 13 end
+2  local-search-idsia       ras 88 0.83               8474 0.67 1.01    1.68 15 end
+39 local-search-idsia       ras 86 0.79               9474 0.77 0.73    1.55 19 end
+29 local-search-idsia       ras 99 0.81               9450 0.87 0.88    2.16 12 end
+# 2018-05-30 00:23:06 CEST: Iteration 9 of 10
+# experimentsUsedSoFar: 665
+# remainingBudget: 9335
+# currentBudget: 4667
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         22|         10|         42|    31410.00000|         10|00:02:02|   NA|  NA|    NA|
+|x|          8|         10|          2|    262536.0000|         15|00:01:26|+0.00|0.50|0.4500|
+|x|          5|         10|          2|    177331.3333|         20|00:01:41|+0.12|0.41|0.5371|
+|x|         20|         10|          2|    749529.5000|         25|00:02:56|+0.03|0.27|0.6483|
+|=|         13|         10|          2|    600168.4000|         30|00:01:11|+0.02|0.22|0.5240|
+|=|          7|         10|         50|    501416.0000|         35|00:02:21|+0.03|0.19|0.5920|
+|=|         18|         10|         50|    500044.0000|         40|00:01:26|+0.09|0.22|0.6033|
+|-|          4|          7|         50|    746573.5000|         45|00:02:56|-0.07|0.06|0.6660|
+|=|          3|          7|         50|    1720052.444|         47|00:00:52|-0.06|0.05|0.5894|
+|=|          9|          7|         50|    1548319.600|         49|00:00:28|-0.06|0.05|0.5287|
+|=|         14|          7|         50|    1407564.727|         51|00:00:32|-0.05|0.04|0.4793|
+|=|         16|          7|         50|    1290701.000|         53|00:00:56|-0.05|0.04|0.5170|
+|=|         21|          7|         50|    1922792.000|         55|00:00:52|-0.05|0.03|0.4759|
+|=|         10|          7|         50|    1786020.429|         57|00:00:30|-0.03|0.05|0.4908|
+|=|         19|          7|         50|    1667548.267|         59|00:00:30|-0.02|0.05|0.5181|
+|=|          6|          7|         50|    1566378.875|         61|00:01:40|-0.00|0.06|0.5272|
+|=|         12|          7|         50|    2033526.235|         63|00:00:52|-0.00|0.06|0.4967|
+|=|         15|          7|         50|    1920937.111|         65|00:00:40|-0.00|0.05|0.4695|
+|=|          2|          7|         50|    1819836.000|         67|00:00:32|-0.00|0.05|0.4452|
+|=|          1|          7|         50|    1730414.700|         69|00:00:24|-0.00|0.05|0.4232|
+|=|         17|          7|         50|    1650345.333|         71|00:01:40|-0.02|0.03|0.4525|
+|=|         11|          7|         50|    1576757.364|         73|00:00:24|-0.02|0.03|0.4318|
+|=|         23|          7|         50|    1615454.783|         80|00:04:07|-0.02|0.03|0.4523|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          50    mean value:     1615454.783
+Description of the best configuration:
+   .ID.        localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end .PARENT.
+50   50 local-search-idsia       ras 77 0.17               3714 0.42 1.33    3.59 14 end       42
+
+# 2018-05-30 00:54:15 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+          localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+50 local-search-idsia       ras 77 0.17               3714 0.42 1.33    3.59 14 end
+38 local-search-idsia       ras 82 0.39               5535 0.34 1.48    4.39 13 end
+42 local-search-idsia       ras 81 0.20               4051 0.35 1.50    4.00 14 end
+2  local-search-idsia       ras 88 0.83               8474 0.67 1.01    1.68 15 end
+39 local-search-idsia       ras 86 0.79               9474 0.77 0.73    1.55 19 end
+# 2018-05-30 00:54:15 CEST: Iteration 10 of 10
+# experimentsUsedSoFar: 745
+# remainingBudget: 9255
+# currentBudget: 9255
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         24|         10|         50|    16.00000000|         10|00:02:42|   NA|  NA|    NA|
+|x|          5|         10|         50|    3469.000000|         15|00:01:41|+0.00|0.50|0.4500|
+|x|          7|         10|         50|    4034.666667|         20|00:02:21|-0.15|0.23|0.6923|
+|x|          9|         10|         50|    3707.000000|         25|00:01:11|-0.10|0.17|0.4961|
+|=|          6|         10|         50|    12733.20000|         30|00:04:12|+0.04|0.23|0.5186|
+|=|          8|         10|         50|    92888.00000|         35|00:01:26|+0.05|0.21|0.5189|
+|=|         19|         10|         50|    80895.14286|         40|00:01:16|-0.04|0.11|0.6355|
+|=|         11|         10|         50|    74709.50000|         45|00:01:01|-0.04|0.09|0.5570|
+|=|         10|         10|         50|    67296.22222|         50|00:01:16|-0.03|0.09|0.5763|
+|=|         20|         10|         50|    307427.8000|         55|00:02:56|-0.04|0.06|0.6275|
+|=|         22|         10|         50|    282335.2727|         60|00:01:01|-0.04|0.06|0.5707|
+|=|         23|         10|         50|    464373.8333|         65|00:02:56|-0.00|0.08|0.5890|
+|=|          4|         10|          2|    616610.4615|         70|00:02:56|-0.03|0.05|0.6254|
+|=|          3|         10|          2|    1251701.429|         75|00:02:11|-0.03|0.05|0.5806|
+|=|         12|         10|          2|    1802113.600|         80|00:02:11|-0.02|0.05|0.6026|
+|=|          1|         10|          2|    1691444.625|         85|00:01:01|-0.02|0.05|0.5648|
+|=|         15|         10|          2|    1592355.059|         90|00:01:41|-0.02|0.04|0.5314|
+|=|          2|         10|          2|    1503891.778|         95|00:01:21|-0.01|0.04|0.5018|
+|=|         16|         10|         50|    1426530.632|        100|00:02:21|-0.00|0.05|0.5213|
+|=|         21|         10|         50|    1830598.300|        105|00:02:11|-0.00|0.05|0.4952|
+|=|         14|         10|         50|    1743427.714|        110|00:01:21|-0.00|0.04|0.4716|
+|=|         18|         10|         50|    1686536.091|        115|00:01:26|+0.01|0.05|0.4872|
+|=|         13|         10|         50|    1613326.870|        120|00:01:11|+0.01|0.05|0.4662|
+|=|         17|         10|          2|    1547154.000|        125|00:04:12|+0.00|0.05|0.4832|
+|=|         25|         10|          2|    1485474.480|        135|00:04:43|-0.01|0.03|0.5046|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:           2    mean value:     1485474.480
+Description of the best configuration:
+  .ID.        localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end .PARENT.
+2    2 local-search-idsia       ras 88 0.83               8474 0.67 1.01    1.68 15 end       NA
+
+# 2018-05-30 01:47:10 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+          localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+2  local-search-idsia       ras 88 0.83               8474 0.67 1.01    1.68 15 end
+38 local-search-idsia       ras 82 0.39               5535 0.34 1.48    4.39 13 end
+42 local-search-idsia       ras 81 0.20               4051 0.35 1.50    4.00 14 end
+50 local-search-idsia       ras 77 0.17               3714 0.42 1.33    3.59 14 end
+51 local-search-idsia       ras 82 0.32               4088 0.53 1.28    4.34 14 end
+# Best configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+          localSearch algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+2  local-search-idsia       ras 88 0.83               8474 0.67 1.01    1.68 15 end
+38 local-search-idsia       ras 82 0.39               5535 0.34 1.48    4.39 13 end
+42 local-search-idsia       ras 81 0.20               4051 0.35 1.50    4.00 14 end
+50 local-search-idsia       ras 77 0.17               3714 0.42 1.33    3.59 14 end
+51 local-search-idsia       ras 82 0.32               4088 0.53 1.28    4.34 14 end
+# Best configurations as commandlines (first number is the configuration ID; same order as above):
+2   --local-search-idsia --ras --m 88 --rho 0.83 --rounds-reinitialize 8474 --q 0.67 --k 1.01 --Q 1.68 --w 15 --end
+38  --local-search-idsia --ras --m 82 --rho 0.39 --rounds-reinitialize 5535 --q 0.34 --k 1.48 --Q 4.39 --w 13 --end
+42  --local-search-idsia --ras --m 81 --rho 0.2 --rounds-reinitialize 4051 --q 0.35 --k 1.5 --Q 4 --w 14 --end
+50  --local-search-idsia --ras --m 77 --rho 0.17 --rounds-reinitialize 3714 --q 0.42 --k 1.33 --Q 3.59 --w 14 --end
+51  --local-search-idsia --ras --m 82 --rho 0.32 --rounds-reinitialize 4088 --q 0.53 --k 1.28 --Q 4.34 --w 14 --end

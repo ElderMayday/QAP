@@ -1,0 +1,476 @@
+*******************************************************************************
+* irace: An implementation in R of Iterated Race
+* Version: 2.4.1844
+* Copyright (C) 2010-2017
+* Manuel Lopez-Ibanez     <manuel.lopez-ibanez@manchester.ac.uk>
+* Jeremie Dubois-Lacoste  
+* Leslie Perez Caceres    <leslie.perez.caceres@ulb.ac.be>
+*
+* This is free software, and you are welcome to redistribute it under certain
+* conditions.  See the GNU General Public License for details. There is NO
+* WARRANTY; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+*
+* irace builds upon previous code from the race package:
+*
+* race: Racing methods for the selection of the best
+* Copyright (C) 2003 Mauro Birattari
+*******************************************************************************
+# installed at: /home/asaranov/R/x86_64-redhat-linux-gnu-library/2.15/irace
+# called with: --scenario scenario.txt
+# 1 expression(s) specifying forbidden configurations read from '/home/asaranov/irace-ras/forbidden.txt'
+# 2018-05-16 16:26:27 CEST: Initialization
+# Elitist race
+# Elitist new instances: 1
+# Elitist limit: 2
+# nbIterations: 10
+# minNbSurvival: 5
+# nbParameters: 7
+# seed: 801313871
+# confidence level: 0.95
+# budget: 10000
+# mu: 5
+# deterministic: FALSE
+
+# 2018-05-16 16:26:27 CEST: Iteration 1 of 10
+# experimentsUsedSoFar: 0
+# remainingBudget: 10000
+# currentBudget: 1000
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|          1|         10|          9|    491812.0000|         10|00:02:54|   NA|  NA|    NA|
+|x|          2|         10|          9|    261611.0000|         20|00:02:03|+0.00|0.50|0.4500|
+|x|          3|         10|          9|    1001148.000|         30|00:05:54|+0.04|0.36|0.6515|
+|x|          4|         10|          9|    750865.0000|         40|00:02:43|+0.03|0.27|0.4758|
+|=|          5|         10|          9|    610483.6000|         50|00:08:25|-0.07|0.14|0.5962|
+|=|          6|         10|          9|    2093383.667|         60|00:04:24|-0.02|0.15|0.6257|
+|=|          7|         10|          5|    1796202.286|         70|00:03:23|-0.06|0.10|0.6859|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:           5    mean value:     1796202.286
+Description of the best configuration:
+  .ID. algorithm  m rho roundsReinitialize    q    k factorQ  w end .PARENT.
+5    5       ras 25 0.2               9042 0.59 1.85     2.4 20 end       NA
+
+# 2018-05-16 16:56:17 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+  algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+5       ras 25 0.20               9042 0.59 1.85    2.40 20 end
+6       ras 87 0.07               9481 0.66 2.88    4.63 18 end
+9       ras 30 0.24               2000 0.06 1.19    3.56  1 end
+3       ras 88 0.72               9975 0.22 2.16    4.81  9 end
+1       ras 35 0.69                758 0.84 2.25    1.52 10 end
+# 2018-05-16 16:56:17 CEST: Iteration 2 of 10
+# experimentsUsedSoFar: 70
+# remainingBudget: 9930
+# currentBudget: 1103
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|          8|         10|          9|    7990.000000|         10|00:02:33|   NA|  NA|    NA|
+|x|          6|         10|          9|    4757937.000|         15|00:02:12|+0.22|0.61|0.6611|
+|x|          2|         10|          9|    3182428.000|         20|00:01:01|+0.11|0.41|0.5204|
+|x|          7|         10|          1|    2388551.500|         25|00:01:41|-0.10|0.17|0.7329|
+|=|          3|         10|         11|    2402298.400|         30|00:02:57|-0.03|0.18|0.7560|
+|=|          4|         10|         11|    2001918.000|         35|00:01:21|-0.02|0.15|0.6240|
+|=|          1|         10|         11|    1786579.714|         40|00:01:26|+0.04|0.18|0.6335|
+|=|          5|         10|         11|    1569373.500|         45|00:04:12|-0.04|0.09|0.6922|
+|=|          9|         10|         11|    1395301.333|         55|00:02:23|-0.03|0.08|0.6133|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          11    mean value:     1395301.333
+Description of the best configuration:
+   .ID. algorithm  m  rho roundsReinitialize    q    k factorQ  w end .PARENT.
+11   11       ras 60 0.92               5264 0.34 2.22    4.49 11 end        3
+
+# 2018-05-16 17:16:09 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+11       ras 60 0.92               5264 0.34 2.22    4.49 11 end
+12       ras 60 0.56               7548 0.05 2.09    1.47  4 end
+9        ras 30 0.24               2000 0.06 1.19    3.56  1 end
+13       ras 20 0.28               7730 0.73 2.07    3.65 17 end
+5        ras 25 0.20               9042 0.59 1.85    2.40 20 end
+# 2018-05-16 17:16:09 CEST: Iteration 3 of 10
+# experimentsUsedSoFar: 125
+# remainingBudget: 9875
+# currentBudget: 1234
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         10|         10|         18|    5170.000000|         10|00:04:44|   NA|  NA|    NA|
+|x|          5|         10|         18|    27024.00000|         15|00:04:13|+0.27|0.63|0.7869|
+|x|          8|         10|         17|    20694.00000|         20|00:01:16|-0.03|0.32|0.9051|
+|x|          7|         10|         20|    17254.50000|         25|00:01:41|-0.09|0.18|0.9629|
+|=|          9|         10|         20|    14348.40000|         30|00:01:11|-0.07|0.15|0.7577|
+|=|          2|         10|         20|    17192.00000|         35|00:01:01|-0.05|0.12|0.6252|
+|=|          1|         10|         18|    85125.71429|         40|00:01:26|-0.08|0.07|0.6934|
+|=|          3|         10|          5|    385257.2500|         45|00:02:57|-0.05|0.08|0.6993|
+|=|          4|         10|          5|    342452.6667|         50|00:01:21|-0.05|0.07|0.6189|
+|=|          6|         10|          5|    1258995.800|         55|00:02:12|-0.04|0.06|0.5551|
+|=|         11|         10|         11|    1186794.545|         65|00:02:53|-0.04|0.06|0.5820|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          11    mean value:     1186794.545
+Description of the best configuration:
+   .ID. algorithm  m  rho roundsReinitialize    q    k factorQ  w end .PARENT.
+11   11       ras 60 0.92               5264 0.34 2.22    4.49 11 end        3
+
+# 2018-05-16 17:41:12 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+11       ras 60 0.92               5264 0.34 2.22    4.49 11 end
+18       ras 84 0.59               5681 0.41 2.71    2.28 16 end
+20       ras 57 0.53               1302 0.07 0.93    3.60  4 end
+5        ras 25 0.20               9042 0.59 1.85    2.40 20 end
+12       ras 60 0.56               7548 0.05 2.09    1.47  4 end
+# 2018-05-16 17:41:12 CEST: Iteration 4 of 10
+# experimentsUsedSoFar: 190
+# remainingBudget: 9810
+# currentBudget: 1401
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         12|         10|         11|    9507884.000|         10|00:04:24|   NA|  NA|    NA|
+|x|         10|         10|         18|    4756527.000|         15|00:02:22|-0.15|0.43|1.0477|
+|x|          9|         10|         18|    3171926.000|         20|00:01:11|-0.07|0.28|0.6492|
+|x|          1|         10|         18|    2501897.500|         25|00:01:26|-0.05|0.21|0.7254|
+|=|         11|         10|         18|    2100837.600|         30|00:01:26|-0.01|0.19|0.7295|
+|=|          6|         10|         18|    3335345.333|         35|00:02:12|-0.01|0.16|0.6063|
+|=|          4|         10|         18|    2858869.714|         40|00:01:21|-0.01|0.14|0.5188|
+|=|          8|         10|         18|    2502628.250|         45|00:01:16|-0.01|0.11|0.5601|
+|=|          2|         10|         18|    2228048.444|         50|00:01:01|-0.01|0.10|0.4981|
+|=|          5|         10|         18|    2010131.400|         55|00:04:13|+0.01|0.11|0.5327|
+|=|          3|         10|         11|    2050518.364|         60|00:02:57|+0.03|0.11|0.5528|
+|=|          7|         10|         11|    1880218.667|         65|00:01:42|+0.00|0.09|0.5995|
+|=|         13|         10|         20|    1739256.462|         75|00:04:44|-0.00|0.07|0.6320|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          20    mean value:     1739256.462
+Description of the best configuration:
+   .ID. algorithm  m  rho roundsReinitialize    q    k factorQ w end .PARENT.
+20   20       ras 57 0.53               1302 0.07 0.93     3.6 4 end        9
+
+# 2018-05-16 18:11:34 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+20       ras 57 0.53               1302 0.07 0.93    3.60  4 end
+18       ras 84 0.59               5681 0.41 2.71    2.28 16 end
+11       ras 60 0.92               5264 0.34 2.22    4.49 11 end
+22       ras 79 0.80               5512 0.34 2.97    1.73 16 end
+12       ras 60 0.56               7548 0.05 2.09    1.47  4 end
+# 2018-05-16 18:11:34 CEST: Iteration 5 of 10
+# experimentsUsedSoFar: 265
+# remainingBudget: 9735
+# currentBudget: 1622
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         14|         10|         22|    2465764.000|         10|00:05:54|   NA|  NA|    NA|
+|x|          7|         10|         22|    1236343.000|         15|00:01:42|-0.41|0.30|1.2704|
+|x|          4|         10|         22|    824234.0000|         20|00:01:21|-0.20|0.20|0.7235|
+|x|         13|         10|         22|    619475.0000|         25|00:02:22|+0.05|0.29|0.7002|
+|=|         11|         10|         30|    597072.8000|         30|00:01:26|+0.10|0.28|0.6939|
+|=|         12|         10|         30|    2082208.000|         35|00:02:12|+0.17|0.31|0.6482|
+|=|          6|         10|         30|    3143018.857|         40|00:02:12|+0.14|0.26|0.5701|
+|-|          5|          8|         30|    2756256.250|         45|00:04:12|-0.03|0.10|0.5757|
+|=|          3|          8|         28|    2726262.444|         48|00:01:46|-0.04|0.08|0.6272|
+|=|          9|          8|         28|    2453908.600|         51|00:00:43|-0.03|0.07|0.5601|
+|=|          8|          8|         28|    2231552.364|         54|00:00:46|-0.03|0.07|0.5890|
+|=|          1|          8|         28|    2087279.833|         57|00:00:52|-0.05|0.04|0.6209|
+|=|          2|          8|         28|    1929136.000|         60|00:00:37|-0.05|0.03|0.5703|
+|=|         10|          8|         20|    1792375.857|         63|00:01:25|-0.05|0.02|0.5939|
+|=|         15|          8|         20|    1673065.733|         71|00:01:55|-0.05|0.02|0.5522|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          20    mean value:     1673065.733
+Description of the best configuration:
+   .ID. algorithm  m  rho roundsReinitialize    q    k factorQ w end .PARENT.
+20   20       ras 57 0.53               1302 0.07 0.93     3.6 4 end        9
+
+# 2018-05-16 18:41:04 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+20       ras 57 0.53               1302 0.07 0.93    3.60  4 end
+22       ras 79 0.80               5512 0.34 2.97    1.73 16 end
+28       ras 99 0.34               6632 0.51 2.07    2.37 14 end
+11       ras 60 0.92               5264 0.34 2.22    4.49 11 end
+18       ras 84 0.59               5681 0.41 2.71    2.28 16 end
+# 2018-05-16 18:41:04 CEST: Iteration 6 of 10
+# experimentsUsedSoFar: 336
+# remainingBudget: 9664
+# currentBudget: 1932
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         16|         10|         20|    31410.00000|         10|00:02:03|   NA|  NA|    NA|
+|x|          8|         10|         20|    19700.00000|         15|00:01:16|+0.00|0.50|0.4500|
+|x|          2|         10|         20|    23603.33333|         20|00:01:01|+0.00|0.33|0.3000|
+|x|         11|         10|         11|    140655.5000|         25|00:01:26|+0.13|0.35|0.3781|
+|=|         10|         10|         11|    113567.6000|         30|00:02:22|-0.02|0.19|0.5092|
+|=|          9|         10|         11|    95093.66667|         35|00:01:11|-0.01|0.15|0.4295|
+|=|          7|         10|         11|    82497.71429|         40|00:01:42|-0.03|0.12|0.5175|
+|=|          4|         10|         11|    72187.50000|         45|00:01:21|-0.03|0.10|0.4524|
+|=|         12|         10|         11|    1120598.222|         50|00:02:12|-0.03|0.08|0.5110|
+|=|          5|         10|         11|    1013431.400|         55|00:04:13|-0.05|0.05|0.5665|
+|=|          3|         10|         11|    1144690.909|         60|00:02:57|-0.01|0.08|0.5766|
+|=|         15|         10|         11|    1049527.000|         65|00:01:11|-0.01|0.08|0.5282|
+|=|          6|         10|         11|    1700169.846|         70|00:02:12|+0.01|0.09|0.5408|
+|=|         13|         10|         20|    1581714.857|         75|00:02:22|-0.00|0.07|0.5799|
+|=|         14|         10|         20|    1641795.733|         80|00:02:57|-0.01|0.06|0.6078|
+|=|          1|         10|         20|    1570462.250|         85|00:01:26|-0.01|0.06|0.6226|
+|=|         17|         10|         20|    1478083.059|         95|00:02:43|-0.01|0.05|0.5857|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          20    mean value:     1478083.059
+Description of the best configuration:
+   .ID. algorithm  m  rho roundsReinitialize    q    k factorQ w end .PARENT.
+20   20       ras 57 0.53               1302 0.07 0.93     3.6 4 end        9
+
+# 2018-05-16 19:15:49 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+20       ras 57 0.53               1302 0.07 0.93    3.60  4 end
+35       ras 94 0.58               5403 0.17 2.76    2.26 16 end
+28       ras 99 0.34               6632 0.51 2.07    2.37 14 end
+22       ras 79 0.80               5512 0.34 2.97    1.73 16 end
+11       ras 60 0.92               5264 0.34 2.22    4.49 11 end
+# 2018-05-16 19:15:49 CEST: Iteration 7 of 10
+# experimentsUsedSoFar: 431
+# remainingBudget: 9569
+# currentBudget: 2392
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         18|         10|         11|    7990.000000|         10|00:02:33|   NA|  NA|    NA|
+|x|          7|         10|         11|    7456.000000|         15|00:01:42|-0.38|0.31|1.2254|
+|x|         15|         10|         11|    5878.666667|         20|00:01:11|-0.19|0.21|0.7085|
+|x|          5|         10|         37|    16632.50000|         25|00:04:12|-0.24|0.07|0.8014|
+|=|         14|         10|         28|    508927.6000|         30|00:02:57|-0.23|0.01|0.8605|
+|=|         16|         10|         28|    429341.3333|         35|00:01:01|-0.19|0.01|0.6937|
+|=|          2|         10|         28|    372494.0000|         40|00:01:01|-0.15|0.01|0.5812|
+|=|         17|         10|         28|    325934.2500|         45|00:01:21|-0.13|0.01|0.5002|
+|=|          3|         10|         38|    562814.2222|         50|00:02:57|-0.08|0.04|0.5262|
+|=|         13|         10|         28|    510021.4000|         55|00:02:22|-0.06|0.05|0.5656|
+|=|          4|         10|         28|    463657.2727|         60|00:01:21|-0.05|0.04|0.5118|
+|=|         11|         10|         28|    466231.6667|         65|00:01:26|-0.03|0.05|0.5346|
+|=|         12|         10|         28|    1161743.385|         70|00:02:12|-0.03|0.05|0.5632|
+|=|          9|         10|         28|    1078956.286|         75|00:01:11|-0.03|0.04|0.5223|
+|=|          8|         10|         28|    1007558.533|         80|00:01:16|-0.02|0.05|0.5405|
+|=|          1|         10|         11|    974441.5000|         85|00:01:26|-0.03|0.04|0.5723|
+|=|          6|         10|         11|    1476408.706|         90|00:02:12|-0.03|0.03|0.5380|
+|=|         10|         10|         11|    1394675.778|         95|00:02:22|-0.04|0.02|0.5650|
+|=|         19|         10|         11|    1321636.105|        105|00:03:24|-0.04|0.02|0.5345|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          11    mean value:     1321636.105
+Description of the best configuration:
+   .ID. algorithm  m  rho roundsReinitialize    q    k factorQ  w end .PARENT.
+11   11       ras 60 0.92               5264 0.34 2.22    4.49 11 end        3
+
+# 2018-05-16 19:54:07 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+11       ras 60 0.92               5264 0.34 2.22    4.49 11 end
+22       ras 79 0.80               5512 0.34 2.97    1.73 16 end
+28       ras 99 0.34               6632 0.51 2.07    2.37 14 end
+20       ras 57 0.53               1302 0.07 0.93    3.60  4 end
+36       ras 53 0.99               4719 0.07 2.00    4.49 12 end
+# 2018-05-16 19:54:07 CEST: Iteration 8 of 10
+# experimentsUsedSoFar: 536
+# remainingBudget: 9464
+# currentBudget: 3154
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         20|         10|         44|    48872.00000|         10|00:08:26|   NA|  NA|    NA|
+|x|         12|         10|         44|    4778378.000|         15|00:02:12|+0.00|0.50|0.4500|
+|x|         13|         10|         43|    3187338.000|         20|00:02:22|-0.29|0.14|0.7521|
+|x|          8|         10|         28|    2392503.500|         25|00:01:16|-0.29|0.04|0.8653|
+|=|          3|         10|         11|    2405472.800|         30|00:02:57|-0.20|0.04|0.8579|
+|=|         11|         10|         11|    2086529.333|         35|00:01:26|-0.13|0.06|0.8460|
+|=|         15|         10|         11|    1788842.857|         40|00:01:11|-0.11|0.05|0.7114|
+|=|         14|         10|         28|    1879040.250|         45|00:02:57|-0.10|0.03|0.7303|
+|=|         17|         10|         28|    1670259.778|         50|00:01:21|-0.09|0.03|0.6430|
+|=|          9|         10|         28|    1503506.200|         55|00:01:11|-0.08|0.03|0.5744|
+|=|          1|         10|         11|    1410302.182|         60|00:01:26|-0.06|0.04|0.5919|
+|=|         19|         10|         11|    1293353.833|         65|00:01:42|-0.05|0.04|0.6092|
+|=|         16|         10|         11|    1196281.231|         70|00:01:01|-0.04|0.04|0.5617|
+|=|          5|         10|         11|    1114327.571|         75|00:04:13|-0.04|0.03|0.5939|
+|=|          6|         10|         11|    1673898.000|         80|00:02:12|-0.03|0.03|0.6134|
+|=|         10|         10|         11|    1569605.375|         85|00:02:22|-0.04|0.03|0.6376|
+|=|          2|         10|         11|    1479123.294|         90|00:01:01|-0.04|0.02|0.5990|
+|=|         18|         10|         11|    1397393.667|         95|00:01:16|-0.02|0.03|0.6116|
+|=|          7|         10|         11|    1324210.947|        100|00:01:42|-0.02|0.03|0.6266|
+|=|          4|         10|         11|    1258001.200|        105|00:01:21|-0.02|0.03|0.5947|
+|=|         21|         10|         43|    1222491.524|        115|00:02:53|-0.02|0.02|0.6149|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          43    mean value:     1222491.524
+Description of the best configuration:
+   .ID. algorithm  m rho roundsReinitialize    q    k factorQ  w end .PARENT.
+43   43       ras 45 0.8               4486 0.01 1.85    4.14 10 end       36
+
+# 2018-05-16 20:40:47 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+43       ras 45 0.80               4486 0.01 1.85    4.14 10 end
+11       ras 60 0.92               5264 0.34 2.22    4.49 11 end
+28       ras 99 0.34               6632 0.51 2.07    2.37 14 end
+36       ras 53 0.99               4719 0.07 2.00    4.49 12 end
+44       ras 98 0.82               3072 0.14 2.76    1.42 17 end
+# 2018-05-16 20:40:47 CEST: Iteration 9 of 10
+# experimentsUsedSoFar: 651
+# remainingBudget: 9349
+# currentBudget: 4674
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         22|         10|         11|    2458006.000|         10|00:05:54|   NA|  NA|    NA|
+|x|         13|         10|         28|    1240188.000|         15|00:02:22|-0.26|0.37|1.2152|
+|x|         18|         10|         43|    830562.6667|         20|00:01:16|-0.12|0.25|1.0479|
+|x|         20|         10|         43|    635153.5000|         25|00:04:13|-0.22|0.09|1.0946|
+|=|         10|         10|         43|    509160.0000|         30|00:02:22|-0.11|0.11|0.9644|
+|=|         19|         10|         43|    425453.6667|         35|00:01:41|-0.11|0.07|0.9822|
+|=|         15|         10|         43|    365063.7143|         40|00:01:11|-0.09|0.06|0.8302|
+|=|         11|         10|         43|    381249.5000|         45|00:01:26|-0.06|0.07|0.8080|
+|=|         21|         10|         43|    394116.4444|         50|00:01:26|-0.05|0.07|0.8177|
+|=|          9|         10|         43|    354977.2000|         55|00:01:11|-0.04|0.06|0.7341|
+|=|          8|         10|         43|    323490.7273|         60|00:01:16|-0.04|0.05|0.7505|
+|=|          6|         10|         43|    1088856.833|         65|00:02:12|-0.04|0.05|0.7681|
+|=|          5|         10|         43|    1008860.769|         70|00:04:13|-0.03|0.04|0.7670|
+|=|          3|         10|         43|    1114038.143|         75|00:02:57|-0.02|0.06|0.7694|
+|=|         14|         10|         43|    1204903.733|         80|00:02:57|-0.01|0.06|0.7725|
+|=|         12|         10|         43|    1723840.000|         85|00:02:12|-0.00|0.06|0.7247|
+|=|          1|         10|         43|    1651826.000|         90|00:01:26|-0.02|0.04|0.7433|
+|=|          2|         10|         43|    1561802.889|         95|00:01:01|-0.02|0.04|0.7019|
+|=|          4|         10|         43|    1479603.579|        100|00:01:21|-0.02|0.04|0.6648|
+|=|         16|         10|         43|    1407193.900|        105|00:01:01|-0.02|0.03|0.6315|
+|=|          7|         10|         43|    1340514.286|        110|00:01:42|-0.02|0.03|0.6445|
+|=|         17|         10|         43|    1279582.545|        115|00:01:21|-0.02|0.03|0.6152|
+|=|         23|         10|         43|    1223949.217|        125|00:02:43|-0.02|0.03|0.5884|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          43    mean value:     1223949.217
+Description of the best configuration:
+   .ID. algorithm  m rho roundsReinitialize    q    k factorQ  w end .PARENT.
+43   43       ras 45 0.8               4486 0.01 1.85    4.14 10 end       36
+
+# 2018-05-16 21:30:25 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+43       ras 45 0.80               4486 0.01 1.85    4.14 10 end
+11       ras 60 0.92               5264 0.34 2.22    4.49 11 end
+44       ras 98 0.82               3072 0.14 2.76    1.42 17 end
+28       ras 99 0.34               6632 0.51 2.07    2.37 14 end
+46       ras 78 0.40               8209 0.47 1.91    1.67 16 end
+# 2018-05-16 21:30:25 CEST: Iteration 10 of 10
+# experimentsUsedSoFar: 776
+# remainingBudget: 9224
+# currentBudget: 9224
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         24|         10|         43|    2724.000000|         10|00:02:23|   NA|  NA|    NA|
+|x|          3|         10|         11|    1230005.000|         15|00:02:57|+0.00|0.50|0.4500|
+|x|          4|         10|         11|    820008.6667|         20|00:01:21|+0.00|0.33|0.3000|
+|x|          2|         10|         11|    622859.0000|         25|00:01:01|+0.00|0.25|0.2250|
+|=|         13|         10|         43|    504139.6000|         30|00:02:22|-0.11|0.11|0.4052|
+|=|          1|         10|         52|    499847.6667|         35|00:01:26|-0.10|0.08|0.4897|
+|=|          6|         10|         52|    1786710.000|         40|00:02:12|-0.07|0.08|0.5383|
+|=|         14|         10|         52|    1871920.500|         45|00:02:57|-0.05|0.08|0.5843|
+|=|          9|         10|         52|    1664232.000|         50|00:01:11|-0.04|0.07|0.5169|
+|=|         10|         10|         52|    1498327.000|         55|00:02:22|-0.01|0.09|0.5460|
+|=|         11|         10|         52|    1407924.545|         60|00:01:26|-0.04|0.06|0.5911|
+|=|          8|         10|         52|    1291316.333|         65|00:01:16|-0.02|0.06|0.6093|
+|=|          5|         10|         52|    1195744.615|         70|00:04:13|-0.04|0.04|0.6365|
+|=|         22|         10|         52|    1286734.143|         75|00:02:57|-0.03|0.05|0.6522|
+|=|         17|         10|         52|    1200952.933|         80|00:01:21|-0.03|0.04|0.6081|
+|=|         19|         10|         52|    1126326.000|         85|00:01:42|-0.02|0.04|0.6232|
+|=|         18|         10|         52|    1060541.529|         90|00:01:16|-0.00|0.06|0.6269|
+|=|         16|         10|         52|    1003367.556|         95|00:01:01|-0.00|0.05|0.5926|
+|=|         12|         10|         52|    1451024.684|        100|00:02:12|-0.01|0.05|0.6136|
+|=|         15|         10|         52|    1378609.650|        105|00:01:11|-0.01|0.04|0.5830|
+|=|         20|         10|         52|    1315290.429|        110|00:04:13|-0.01|0.04|0.5982|
+|=|          7|         10|         52|    1255819.136|        115|00:01:42|-0.01|0.03|0.6155|
+|=|         21|         10|         52|    1223015.087|        120|00:01:26|-0.02|0.02|0.6336|
+|=|         23|         10|         52|    1172056.792|        125|00:01:21|-0.02|0.02|0.6069|
+|=|         25|         10|         52|    1127131.720|        135|00:08:26|-0.02|0.02|0.6225|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          52    mean value:     1127131.720
+Description of the best configuration:
+   .ID. algorithm  m  rho roundsReinitialize    q    k factorQ  w end .PARENT.
+52   52       ras 83 0.44               8418 0.61 1.82    1.51 17 end       46
+
+# 2018-05-16 22:26:35 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+52       ras 83 0.44               8418 0.61 1.82    1.51 17 end
+43       ras 45 0.80               4486 0.01 1.85    4.14 10 end
+11       ras 60 0.92               5264 0.34 2.22    4.49 11 end
+46       ras 78 0.40               8209 0.47 1.91    1.67 16 end
+55       ras 56 0.78               6682 0.34 2.41    4.32 10 end
+# Best configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+   algorithm  m  rho roundsReinitialize    q    k factorQ  w end
+52       ras 83 0.44               8418 0.61 1.82    1.51 17 end
+43       ras 45 0.80               4486 0.01 1.85    4.14 10 end
+11       ras 60 0.92               5264 0.34 2.22    4.49 11 end
+46       ras 78 0.40               8209 0.47 1.91    1.67 16 end
+55       ras 56 0.78               6682 0.34 2.41    4.32 10 end
+# Best configurations as commandlines (first number is the configuration ID; same order as above):
+52  --ras --m 83 --rho 0.44 --rounds-reinitialize 8418 --q 0.61 --k 1.82 --Q 1.51 --w 17 --end
+43  --ras --m 45 --rho 0.8 --rounds-reinitialize 4486 --q 0.01 --k 1.85 --Q 4.14 --w 10 --end
+11  --ras --m 60 --rho 0.92 --rounds-reinitialize 5264 --q 0.34 --k 2.22 --Q 4.49 --w 11 --end
+46  --ras --m 78 --rho 0.4 --rounds-reinitialize 8209 --q 0.47 --k 1.91 --Q 1.67 --w 16 --end
+55  --ras --m 56 --rho 0.78 --rounds-reinitialize 6682 --q 0.34 --k 2.41 --Q 4.32 --w 10 --end

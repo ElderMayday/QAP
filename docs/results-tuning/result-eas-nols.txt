@@ -1,0 +1,423 @@
+*******************************************************************************
+* irace: An implementation in R of Iterated Race
+* Version: 2.4.1844
+* Copyright (C) 2010-2017
+* Manuel Lopez-Ibanez     <manuel.lopez-ibanez@manchester.ac.uk>
+* Jeremie Dubois-Lacoste  
+* Leslie Perez Caceres    <leslie.perez.caceres@ulb.ac.be>
+*
+* This is free software, and you are welcome to redistribute it under certain
+* conditions.  See the GNU General Public License for details. There is NO
+* WARRANTY; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+*
+* irace builds upon previous code from the race package:
+*
+* race: Racing methods for the selection of the best
+* Copyright (C) 2003 Mauro Birattari
+*******************************************************************************
+# installed at: /home/asaranov/R/x86_64-redhat-linux-gnu-library/2.15/irace
+# called with: --scenario scenario.txt
+# 2018-05-29 20:03:27 CEST: Initialization
+# Elitist race
+# Elitist new instances: 1
+# Elitist limit: 2
+# nbIterations: 10
+# minNbSurvival: 5
+# nbParameters: 7
+# seed: 862685699
+# confidence level: 0.95
+# budget: 10000
+# mu: 5
+# deterministic: FALSE
+
+# 2018-05-29 20:03:27 CEST: Iteration 1 of 10
+# experimentsUsedSoFar: 0
+# remainingBudget: 10000
+# currentBudget: 1000
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|          1|         10|          1|    16.00000000|         10|00:02:43|   NA|  NA|    NA|
+|x|          2|         10|         10|    4756626.000|         20|00:04:22|+0.00|0.50|0.4500|
+|x|          3|         10|          8|    3342534.000|         30|00:02:52|-0.04|0.31|0.6469|
+|x|          4|         10|          2|    2516562.000|         40|00:03:22|-0.05|0.21|0.7149|
+|=|          5|         10|          2|    2014327.200|         50|00:04:42|+0.11|0.29|0.6559|
+|-|          6|          4|          2|    2104232.667|         60|00:05:52|+0.02|0.18|0.6471|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:           2    mean value:     2104232.667
+Description of the best configuration:
+  .ID.       localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end .PARENT.
+2    2 local-search-none       eas 60 0.86               2136 0.53 1.02    3.47    27 end       NA
+
+# 2018-05-29 20:27:24 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+         localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end
+2  local-search-none       eas 60 0.86               2136 0.53 1.02    3.47    27 end
+6  local-search-none       eas 14 0.92               3159 0.48 0.57    4.83    33 end
+8  local-search-none       eas 15 0.93               2486 0.42 1.33    2.93    92 end
+10 local-search-none       eas 88 0.68               4203 0.57 1.12    4.12    82 end
+# 2018-05-29 20:27:24 CEST: Iteration 2 of 10
+# experimentsUsedSoFar: 60
+# remainingBudget: 9940
+# currentBudget: 1104
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|          7|         10|         14|    7990.000000|         10|00:02:32|   NA|  NA|    NA|
+|x|          1|         10|         14|    4003.000000|         16|00:01:37|+0.00|0.50|0.8095|
+|x|          5|         10|         14|    4418.000000|         22|00:02:49|+0.32|0.55|0.5794|
+|x|          2|         10|         14|    2380339.750|         28|00:02:37|+0.36|0.52|0.5258|
+|!|          6|          6|         14|    2414850.200|         34|00:03:31|+0.18|0.34|0.6374|
+|!|          3|          5|         14|    2094343.833|         36|00:00:34|+0.43|0.53|0.4663|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          14    mean value:     2094343.833
+Description of the best configuration:
+   .ID.       localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end .PARENT.
+14   14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end        2
+
+# 2018-05-29 20:41:07 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+         localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end
+14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end
+2  local-search-none       eas 60 0.86               2136 0.53 1.02    3.47    27 end
+6  local-search-none       eas 14 0.92               3159 0.48 0.57    4.83    33 end
+8  local-search-none       eas 15 0.93               2486 0.42 1.33    2.93    92 end
+10 local-search-none       eas 88 0.68               4203 0.57 1.12    4.12    82 end
+# 2018-05-29 20:41:07 CEST: Iteration 3 of 10
+# experimentsUsedSoFar: 96
+# remainingBudget: 9904
+# currentBudget: 1238
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|          8|         10|         14|    31410.00000|         10|00:02:02|   NA|  NA|    NA|
+|x|          7|         10|         14|    19700.00000|         15|00:01:16|+0.68|0.84|0.2163|
+|x|          4|         10|         20|    16138.00000|         21|00:02:01|+0.41|0.61|0.3591|
+|x|          2|         10|         14|    2388613.250|         26|00:02:11|+0.18|0.39|0.6705|
+|=|          6|         10|         14|    2421469.000|         31|00:02:56|+0.13|0.30|0.7821|
+|!|          3|          7|         14|    2099859.500|         36|00:01:26|+0.26|0.38|0.7020|
+|!|          1|          6|         14|    1799881.857|         38|00:00:32|+0.33|0.43|0.5899|
+|-|          5|          2|         14|    1575552.625|         39|00:00:28|+0.57|0.62|0.1339|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          14    mean value:     1575552.625
+Description of the best configuration:
+   .ID.       localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end .PARENT.
+14   14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end        2
+
+# 2018-05-29 20:54:02 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+         localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end
+14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end
+19 local-search-none       eas 56 0.85               5369 0.46 0.31    1.84    22 end
+# 2018-05-29 20:54:02 CEST: Iteration 4 of 10
+# experimentsUsedSoFar: 135
+# remainingBudget: 9865
+# currentBudget: 1409
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|          9|         10|         14|    2724.000000|         10|00:02:22|   NA|  NA|    NA|
+|x|          7|         10|         14|    5357.000000|         18|00:02:01|+0.40|0.70|0.6611|
+|x|          8|         10|         14|    14041.33333|         26|00:01:37|+0.58|0.72|0.4429|
+|x|          5|         10|         14|    11843.00000|         34|00:03:46|+0.68|0.76|0.3341|
+|-|          2|          5|         14|    1911095.400|         42|00:03:30|-0.08|0.14|0.5414|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          14    mean value:     1911095.400
+Description of the best configuration:
+   .ID.       localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end .PARENT.
+14   14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end        2
+
+# 2018-05-29 21:07:20 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+         localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end
+14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end
+19 local-search-none       eas 56 0.85               5369 0.46 0.31    1.84    22 end
+28 local-search-none       eas 29 0.99               9219 0.29 0.39    3.64    43 end
+25 local-search-none       eas 89 0.97               2858 0.50 0.71    1.15    10 end
+29 local-search-none       eas 54 0.78               8624 0.32 1.13    2.07    27 end
+# 2018-05-29 21:07:20 CEST: Iteration 5 of 10
+# experimentsUsedSoFar: 177
+# remainingBudget: 9823
+# currentBudget: 1637
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         10|         10|         14|    49508.00000|         10|00:08:22|   NA|  NA|    NA|
+|x|          7|         10|         14|    28749.00000|         15|00:01:16|+0.01|0.50|0.8515|
+|x|          4|         10|         14|    21482.00000|         23|00:02:41|+0.10|0.40|0.7821|
+|x|          1|         10|         14|    16115.50000|         31|00:02:09|+0.17|0.37|0.6555|
+|=|          8|         10|         14|    19174.40000|         36|00:01:01|+0.09|0.27|0.8123|
+|=|          3|         10|         14|    97947.33333|         44|00:02:17|+0.13|0.27|0.7567|
+|!|          2|          5|         14|    1442255.571|         49|00:02:11|+0.14|0.26|0.5973|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          14    mean value:     1442255.571
+Description of the best configuration:
+   .ID.       localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end .PARENT.
+14   14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end        2
+
+# 2018-05-29 21:27:21 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+         localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end
+14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end
+19 local-search-none       eas 56 0.85               5369 0.46 0.31    1.84    22 end
+25 local-search-none       eas 89 0.97               2858 0.50 0.71    1.15    10 end
+29 local-search-none       eas 54 0.78               8624 0.32 1.13    2.07    27 end
+28 local-search-none       eas 29 0.99               9219 0.29 0.39    3.64    43 end
+# 2018-05-29 21:27:21 CEST: Iteration 6 of 10
+# experimentsUsedSoFar: 226
+# remainingBudget: 9774
+# currentBudget: 1954
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         11|         10|         25|    5196.000000|         10|00:04:42|   NA|  NA|    NA|
+|x|         10|         10|         36|    27296.00000|         15|00:04:11|+0.32|0.66|0.3254|
+|x|          8|         10|         14|    28737.33333|         20|00:01:01|+0.13|0.42|0.6112|
+|x|          2|         10|         14|    2398579.250|         25|00:02:11|+0.31|0.48|0.4514|
+|-|          5|          8|         14|    1919913.000|         30|00:02:21|-0.07|0.14|0.8514|
+|=|          3|          8|         14|    1681896.167|         33|00:00:51|+0.01|0.17|0.7869|
+|=|          9|          8|         14|    1442014.429|         36|00:00:42|+0.05|0.19|0.7520|
+|=|          7|          8|         14|    1262761.375|         39|00:00:45|+0.12|0.23|0.6952|
+|=|          1|          8|         14|    1122456.333|         42|00:00:48|+0.10|0.20|0.6379|
+|=|          6|          8|         14|    1265499.900|         48|00:03:31|+0.10|0.19|0.6505|
+|=|          4|          8|         14|    1151086.091|         51|00:01:00|+0.06|0.15|0.7032|
+|=|         12|          8|         14|    1267592.417|         59|00:04:42|+0.07|0.15|0.7117|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          14    mean value:     1267592.417
+Description of the best configuration:
+   .ID.       localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end .PARENT.
+14   14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end        2
+
+# 2018-05-29 21:54:12 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+         localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end
+14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end
+36 local-search-none       eas 28 0.85               9624 0.63 0.23    2.30    25 end
+38 local-search-none       eas 85 0.83               2941 0.65 0.27    1.05    11 end
+19 local-search-none       eas 56 0.85               5369 0.46 0.31    1.84    22 end
+29 local-search-none       eas 54 0.78               8624 0.32 1.13    2.07    27 end
+# 2018-05-29 21:54:12 CEST: Iteration 7 of 10
+# experimentsUsedSoFar: 285
+# remainingBudget: 9715
+# currentBudget: 2428
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         13|         10|         14|    6948.000000|         10|00:03:22|   NA|  NA|    NA|
+|x|         12|         10|         14|    1278055.000|         15|00:02:56|-0.33|0.33|1.3700|
+|x|          7|         10|         14|    854700.0000|         20|00:01:16|+0.03|0.35|0.9619|
+|x|          6|         10|         14|    1279248.000|         25|00:02:56|+0.12|0.34|0.8888|
+|=|          1|         10|         14|    1023401.600|         30|00:01:21|+0.09|0.27|0.7133|
+|=|          4|         10|         14|    853992.6667|         35|00:01:41|+0.07|0.22|0.7600|
+|=|          9|         10|         14|    732382.8571|         40|00:01:11|+0.06|0.19|0.6500|
+|!|         10|          6|         14|    647023.5000|         45|00:04:11|+0.03|0.15|0.5954|
+|=|          8|          6|         14|    578622.0000|         46|00:00:12|+0.02|0.13|0.6365|
+|=|          3|          6|         14|    569941.0000|         47|00:00:17|+0.06|0.15|0.6214|
+|=|          5|          6|         14|    518605.2727|         48|00:00:28|+0.11|0.19|0.6169|
+|=|         11|          6|         14|    475829.3333|         49|00:00:28|+0.05|0.13|0.6529|
+|=|          2|          6|         14|    1170619.769|         50|00:00:26|+0.05|0.12|0.6551|
+|=|         14|          6|         14|    1087677.214|         56|00:01:31|+0.07|0.14|0.6398|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          14    mean value:     1087677.214
+Description of the best configuration:
+   .ID.       localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end .PARENT.
+14   14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end        2
+
+# 2018-05-29 22:16:32 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+         localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end
+14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end
+36 local-search-none       eas 28 0.85               9624 0.63 0.23    2.30    25 end
+19 local-search-none       eas 56 0.85               5369 0.46 0.31    1.84    22 end
+38 local-search-none       eas 85 0.83               2941 0.65 0.27    1.05    11 end
+29 local-search-none       eas 54 0.78               8624 0.32 1.13    2.07    27 end
+# 2018-05-29 22:16:32 CEST: Iteration 8 of 10
+# experimentsUsedSoFar: 341
+# remainingBudget: 9659
+# currentBudget: 3219
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         15|         10|         14|    16.00000000|         10|00:02:42|   NA|  NA|    NA|
+|x|          5|         10|         14|    2632.000000|         15|00:02:21|+0.00|0.50|0.4500|
+|x|          9|         10|         14|    2662.666667|         20|00:01:11|+0.17|0.44|0.4626|
+|x|          6|         10|         14|    640220.0000|         25|00:02:56|+0.09|0.32|0.6673|
+|=|          7|         10|         14|    513774.0000|         30|00:01:16|+0.21|0.37|0.6267|
+|!|          3|          6|         14|    510113.6667|         35|00:01:26|+0.16|0.30|0.4810|
+|=|         10|          6|         14|    444312.8571|         36|00:00:50|+0.07|0.21|0.5501|
+|=|         11|          6|         14|    389435.5000|         37|00:00:28|+0.00|0.13|0.6208|
+|=|          8|          6|         14|    349654.8889|         38|00:00:12|+0.04|0.15|0.6177|
+|=|          1|          6|         14|    314691.0000|         39|00:00:16|+0.04|0.13|0.5590|
+|=|         13|          6|         14|    286714.3636|         40|00:00:20|+0.05|0.14|0.5679|
+|=|          4|          6|         14|    263400.5000|         41|00:00:20|+0.08|0.15|0.5868|
+|=|          2|          6|         14|    974531.6154|         42|00:00:26|+0.07|0.14|0.5932|
+|=|         12|          6|         14|    1087005.214|         43|00:00:35|+0.08|0.15|0.6055|
+|=|         14|          6|         14|    1015166.467|         44|00:00:15|+0.06|0.13|0.6323|
+|=|         16|          6|         14|    953762.0625|         50|00:01:13|+0.05|0.11|0.6527|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          14    mean value:     953762.0625
+Description of the best configuration:
+   .ID.       localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end .PARENT.
+14   14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end        2
+
+# 2018-05-29 22:33:24 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+         localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end
+14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end
+36 local-search-none       eas 28 0.85               9624 0.63 0.23    2.30    25 end
+19 local-search-none       eas 56 0.85               5369 0.46 0.31    1.84    22 end
+38 local-search-none       eas 85 0.83               2941 0.65 0.27    1.05    11 end
+46 local-search-none       eas 26 0.88               9245 0.45 0.39    2.83    26 end
+# 2018-05-29 22:33:24 CEST: Iteration 9 of 10
+# experimentsUsedSoFar: 391
+# remainingBudget: 9609
+# currentBudget: 4804
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         17|         10|         38|    49152.00000|         10|00:08:22|   NA|  NA|    NA|
+|x|          7|         10|         14|    28773.00000|         15|00:01:16|-0.03|0.48|0.9884|
+|x|          8|         10|         14|    29652.00000|         20|00:01:01|+0.02|0.35|0.8666|
+|x|         11|         10|         14|    23562.50000|         25|00:02:21|-0.15|0.14|0.9753|
+|=|          9|         10|         14|    19394.80000|         30|00:01:11|-0.11|0.11|0.7652|
+|=|          4|         10|         14|    17320.33333|         35|00:01:41|-0.11|0.08|0.7894|
+|=|         10|         10|         14|    21918.57143|         40|00:04:11|-0.05|0.10|0.7765|
+|=|         12|         10|         14|    337824.0000|         45|00:02:56|+0.02|0.14|0.7405|
+|=|          3|         10|         14|    354933.7778|         50|00:01:26|+0.01|0.12|0.7555|
+|=|         13|         10|         14|    320135.2000|         55|00:01:41|+0.01|0.10|0.6844|
+|=|         15|         10|         14|    291033.4545|         60|00:01:21|+0.00|0.10|0.6254|
+|=|          1|         10|         14|    266782.0000|         65|00:01:21|+0.00|0.09|0.5757|
+|=|          6|         10|         14|    442636.6154|         70|00:02:56|+0.04|0.11|0.5762|
+|=|         16|         10|         14|    413355.1429|         75|00:01:01|+0.02|0.09|0.6200|
+|=|          2|         10|         14|    1019671.800|         80|00:02:11|+0.05|0.11|0.6196|
+|=|         14|         10|         14|    956531.3125|         85|00:01:16|+0.02|0.08|0.6512|
+|=|          5|         10|         14|    900573.4706|         90|00:02:21|+0.01|0.07|0.6677|
+|=|         18|         10|         14|    878593.0556|        100|00:02:52|+0.01|0.07|0.6849|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          14    mean value:     878593.0556
+Description of the best configuration:
+   .ID.       localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end .PARENT.
+14   14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end        2
+
+# 2018-05-29 23:14:54 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+         localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end
+14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end
+36 local-search-none       eas 28 0.85               9624 0.63 0.23    2.30    25 end
+51 local-search-none       eas 74 0.83               6372 0.50 0.44    1.57    14 end
+38 local-search-none       eas 85 0.83               2941 0.65 0.27    1.05    11 end
+54 local-search-none       eas 59 0.79               5461 0.43 0.63    1.86    15 end
+# 2018-05-29 23:14:54 CEST: Iteration 10 of 10
+# experimentsUsedSoFar: 491
+# remainingBudget: 9509
+# currentBudget: 9509
+# nbConfigurations: 10
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|         19|         10|         51|    9507884.000|         10|00:04:22|   NA|  NA|    NA|
+|x|         10|         10|         58|    4779446.500|         15|00:04:11|-0.66|0.17|1.5401|
+|x|          6|         10|         55|    4036778.667|         20|00:02:56|-0.16|0.22|1.0451|
+|x|         14|         10|         55|    3029951.500|         25|00:01:16|+0.06|0.29|0.8362|
+|=|         11|         10|         58|    2438884.200|         30|00:02:21|-0.04|0.16|0.9049|
+|=|          5|         10|         58|    2033280.833|         35|00:02:21|-0.04|0.13|0.9015|
+|=|         17|         10|         58|    1749925.286|         40|00:04:11|-0.03|0.11|0.8994|
+|=|          7|         10|         14|    1523703.250|         45|00:01:16|-0.01|0.11|0.8824|
+|=|         18|         10|         14|    1410505.778|         50|00:01:26|+0.04|0.15|0.8498|
+|=|         12|         10|         14|    1524371.400|         55|00:02:56|+0.05|0.14|0.8479|
+|=|          9|         10|         14|    1386039.818|         60|00:01:11|+0.05|0.14|0.8390|
+|=|          8|         10|         14|    1273154.000|         65|00:01:01|+0.07|0.15|0.8089|
+|=|          1|         10|         14|    1175220.308|         70|00:01:21|+0.07|0.14|0.7536|
+|!|          2|          7|         14|    1770426.357|         75|00:02:11|+0.04|0.11|0.6847|
+|=|         13|          7|         14|    1652861.133|         77|00:00:40|+0.04|0.10|0.6424|
+|=|          3|          7|         14|    1580295.562|         79|00:00:34|+0.06|0.12|0.6414|
+|=|         15|          7|         14|    1487337.941|         81|00:00:32|+0.06|0.12|0.6069|
+|=|         16|          7|         14|    1406524.500|         83|00:00:24|+0.03|0.09|0.6412|
+|=|          4|          7|         14|    1332862.579|         85|00:00:40|+0.01|0.06|0.6682|
+|=|         20|          7|         14|    1266355.650|         92|00:01:39|+0.01|0.06|0.6789|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          14    mean value:     1266355.650
+Description of the best configuration:
+   .ID.       localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end .PARENT.
+14   14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end        2
+
+# 2018-05-29 23:52:30 CEST: Elite configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+         localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end
+14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end
+58 local-search-none       eas 24 0.85               8864 0.55 0.27    2.03    54 end
+36 local-search-none       eas 28 0.85               9624 0.63 0.23    2.30    25 end
+55 local-search-none       eas 35 0.88               8846 0.59 0.36    1.87    33 end
+51 local-search-none       eas 74 0.83               6372 0.50 0.44    1.57    14 end
+# Best configurations (first number is the configuration ID; listed from best to worst according to the sum of ranks):
+         localSearch algorithm  m  rho roundsReinitialize    q    k factorQ sigma end
+14 local-search-none       eas 24 0.97               8693 0.61 0.29    2.34    54 end
+58 local-search-none       eas 24 0.85               8864 0.55 0.27    2.03    54 end
+36 local-search-none       eas 28 0.85               9624 0.63 0.23    2.30    25 end
+55 local-search-none       eas 35 0.88               8846 0.59 0.36    1.87    33 end
+51 local-search-none       eas 74 0.83               6372 0.50 0.44    1.57    14 end
+# Best configurations as commandlines (first number is the configuration ID; same order as above):
+14  --local-search-none --eas --m 24 --rho 0.97 --rounds-reinitialize 8693 --q 0.61 --k 0.29 --Q 2.34 --sigma 54 --end
+58  --local-search-none --eas --m 24 --rho 0.85 --rounds-reinitialize 8864 --q 0.55 --k 0.27 --Q 2.03 --sigma 54 --end
+36  --local-search-none --eas --m 28 --rho 0.85 --rounds-reinitialize 9624 --q 0.63 --k 0.23 --Q 2.3 --sigma 25 --end
+55  --local-search-none --eas --m 35 --rho 0.88 --rounds-reinitialize 8846 --q 0.59 --k 0.36 --Q 1.87 --sigma 33 --end
+51  --local-search-none --eas --m 74 --rho 0.83 --rounds-reinitialize 6372 --q 0.5 --k 0.44 --Q 1.57 --sigma 14 --end

@@ -1,3 +1,4 @@
+localSearch					"--"					c	(local-search-idsia)
 algorithm					"--"					c	(ras)
 m							"--m "					i	(1,100)
 rho							"--rho "				r	(0.0,1.0)

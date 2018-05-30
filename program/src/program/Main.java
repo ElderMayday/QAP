@@ -1,5 +1,6 @@
 package program;
 
+import program.localSearch.LocalSearch;
 import program.localSearch.LocalSearchIdsia;
 import program.solver.Configuration;
 import program.solver.Solver;
@@ -37,7 +38,12 @@ public class Main
                 if (conf.seed != -1)
                     random = new Random(conf.seed);    // set seed if specified
 
-                solver = defineSolver(problem, conf);  // define the algorithm according to the given configuration
+                LocalSearch localSearch = null;
+
+                if (conf.localSearch == 1)
+                    localSearch = new LocalSearchIdsia();
+
+                solver = defineSolver(problem, conf, localSearch);  // define the algorithm according to the given configuration
 
                 Solution solution = solver.solve();
 
@@ -63,16 +69,16 @@ public class Main
     }
 
 
-    private static Solver defineSolver(Problem problem, Configuration conf)
+    private static Solver defineSolver(Problem problem, Configuration conf, LocalSearch localSearch)
     {
         Solver solver = null;
 
         if (conf.algorithm == 0)   // define the algorithm
-            solver = new SolverEAS(problem, conf.antNum, conf.evaporationRemains, new LocalSearchIdsia(),
+            solver = new SolverEAS(problem, conf.antNum, conf.evaporationRemains, localSearch,
                     conf.probabilityBestInModification, conf.selectionPower, conf.numberOfElitist,
                     conf.roundsToReinitialize, conf.factorQ);
         else
-            solver = new SolverRAS(problem, conf.antNum, conf.evaporationRemains, new LocalSearchIdsia(),
+            solver = new SolverRAS(problem, conf.antNum, conf.evaporationRemains, localSearch,
                     conf.probabilityBestInModification, conf.selectionPower, conf.numberOfDepositing,
                     conf.roundsToReinitialize, conf.factorQ);
 

@@ -17,7 +17,7 @@ public abstract class Solver
 {
     protected final PheromoneMap pheromoneMap;
     protected final Problem problem;
-    protected final LocalSearch localSearch;
+    protected final LocalSearch localSearch;              // may be null
     protected final int antNum;                           // a.k.a. m
     protected final long runtime;                         // = number of facilities in seconds
     protected final double evaporationRemains;            // a.k.a. rho
@@ -34,9 +34,6 @@ public abstract class Solver
 
         this.problem = problem;
         this.pheromoneMap = new PheromoneMap();
-
-        if (localSearch == null)
-            throw new IllegalArgumentException("Local search must be specified");
 
         this.localSearch = localSearch;
 
@@ -86,10 +83,11 @@ public abstract class Solver
         for (int i = 0; i < antNum; i++)
             solutions.add(generateRandomSolution());
 
-        // apply local search
+        // apply local search if necessary
 
-        for (Solution solution : solutions)
-            localSearch.search(solution);
+        if (localSearch != null)
+            for (Solution solution : solutions)
+                localSearch.search(solution);
 
         // initialize pheromone matrix according to the best found solution so far
 
@@ -107,11 +105,21 @@ public abstract class Solver
 
             List<Solution> newSolutions = Solution.deepCopyList(solutions);
 
-            for (Solution solution : newSolutions)
+            if (localSearch != null)  // if need to apply local search
             {
-                modifySolution(solution);              // pi^
-                localSearch.search(solution);          // pi~
+                for (Solution solution : newSolutions)
+                {
+                    modifySolution(solution);              // pi^
+                    localSearch.search(solution);          // pi~
+                }
             }
+            else                     // same modification, but without local search
+            {
+                for (Solution solution : newSolutions)
+                    modifySolution(solution);              // pi^
+            }
+
+
 
             if (intensificationIsActivated)  // intensify
             {

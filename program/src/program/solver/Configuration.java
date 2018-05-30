@@ -12,6 +12,8 @@ public class Configuration
     public String path = null;
     public String outputPath = null;
 
+
+    public int localSearch = -1;                 // 0 - None, 1 - LocalSearchIdsia
     public int algorithm = -1;                   // 0 - EAS, 1 - RAS
     public int antNum = -1;
     public double evaporationRemains = -1.0;            // a.k.a. rho
@@ -87,6 +89,28 @@ public class Configuration
                 seed = Integer.parseInt(args[index + 1]);
 
                 index += 2;
+                continue;
+            }
+
+            if (args[index].equals("--local-search-none"))
+            {
+                if (localSearch != -1)
+                    throw new IllegalArgumentException("Local search cannot be redefined");
+
+                localSearch = 0;
+
+                index++;
+                continue;
+            }
+
+            if (args[index].equals("--local-search-idsia"))
+            {
+                if (localSearch != -1)
+                    throw new IllegalArgumentException("Local search cannot be redefined");
+
+                localSearch = 1;
+
+                index++;
                 continue;
             }
 
