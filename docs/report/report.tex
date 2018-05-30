@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+
+\usepackage{caption}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{datetime}
+\usepackage{mathtools}
+
+
+% for listings
+\usepackage{listings}
+\lstset{
+	numbers=left, 
+	numberstyle=\small, 
+	numbersep=8pt, 
+	frame = single, 
+	breaklines=true,
+	tabsize=2,
+	framexleftmargin=15pt
+}
+
+
+
+\author{Student \textbf{Aldar Saranov (000435170 ULB)} \\ Aldar.Saranov@ulb.ac.be}
+
+\date{\today}
+
+\title{Report for the project for the Swarm Intelligence course}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\section{Implementation}
+
+In the literature many different methods are proposed and researched including various implementations of the simulated annealing, taboo search, hybrid genetic-taboo search. However, for this project an algorithm known as Hybrid Ant System for the Quadratic Assignment Problem (HAS-QAP) was used as it was propose by Gambardella and Dorigo in \cite{Gambardella}. As all the ACO algorithms it uses the notion of solution construction biasing by means of pheromone trails, deposited by ants.
+
+\begin{minipage}[c]{0.95\textwidth}
+\begin{lstlisting}[caption={General ACO pseudo-code}, label={lst:aco},mathescape]
+procedure ACO-Metaheuristic
+generate m random permutations $\pi^1$,...,$\pi^m$.
+[optionally] improve $\pi^1$,...,$\pi^m$ by local search
+let $pi^*$ be the best solution
+initialize the pheromone trail matrix T
+activate intensification
+for i=1 to $I^{max}$
+	for k from 1 to m
+		$\hat{\pi}^k$ = PheromoneTrailSwaps($\pi^k$)
+	end
+end
+\end{lstlisting}
+\end{minipage}
+
+
+\bibliographystyle{plain}
+\bibliography{ref}
+
+\end{document}
+
