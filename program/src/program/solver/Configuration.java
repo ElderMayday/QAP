@@ -33,11 +33,6 @@ public class Configuration
             mode = 1;
             index = 1;
         }
-        else if (args[0].equals("--experiment"))
-        {
-            mode = 2;
-            index = 1;
-        }
         else
         {
             mode = 0;

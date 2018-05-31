@@ -21,37 +21,50 @@ public class Main
 {
     public static Random random = new Random(10);
 
+
+    /**
+     * Performs one run on an instance with the configuration provided in the arguments
+     * @param args
+     */
     public static void main(String[] args)
     {
+        run(args, true);
+    }
+
+
+    public static int run(String[] args, boolean mustOutputConsole)
+    {
+        Solution solution = null;
+
         try
         {
             Configuration conf = new Configuration(args);
 
             Solver solver = null;
 
-            if ((conf.mode == 0) || (conf.mode == 1))  // irace or custom mode
+            long startTime = System.currentTimeMillis();  // start clock
+
+            Problem problem = new Problem(new File(conf.path));  // read the instance
+
+            if (conf.seed != -1)
+                random = new Random(conf.seed);    // set seed if specified
+
+            LocalSearch localSearch = null;
+
+            if (conf.localSearch == 1)
+                localSearch = new LocalSearchIdsia();
+
+            solver = defineSolver(problem, conf, localSearch);  // define the algorithm according to the given configuration
+
+            solution = solver.solve();
+
+            outputSolution(solution, conf.outputPath);    // output solution into a file if specified
+
+            long stopTime = System.currentTimeMillis();   // end clock
+            long elapsedTime = stopTime - startTime;
+
+            if (mustOutputConsole)
             {
-                long startTime = System.currentTimeMillis();  // start clock
-
-                Problem problem = new Problem(new File(conf.path));  // read the instance
-
-                if (conf.seed != -1)
-                    random = new Random(conf.seed);    // set seed if specified
-
-                LocalSearch localSearch = null;
-
-                if (conf.localSearch == 1)
-                    localSearch = new LocalSearchIdsia();
-
-                solver = defineSolver(problem, conf, localSearch);  // define the algorithm according to the given configuration
-
-                Solution solution = solver.solve();
-
-                outputSolution(solution, conf.outputPath);    // output solution into a file if specified
-
-                long stopTime = System.currentTimeMillis();   // end clock
-                long elapsedTime = stopTime - startTime;
-
                 if (conf.mode == 0)  // for irace: output objective value with total runtime
                 {
                     Locale.setDefault(Locale.US);
@@ -66,6 +79,8 @@ public class Main
         {
             e.printStackTrace();
         }
+
+        return solution.objective;
     }
 
 
