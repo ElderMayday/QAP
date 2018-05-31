@@ -41,7 +41,7 @@
 
 \section{Implementation}
 
-In the literature many different methods are proposed and researched including various implementations of the simulated annealing, taboo search, hybrid genetic-taboo search. However, for this project an algorithm known as Hybrid Ant System for the Quadratic Assignment Problem (HAS-QAP) was used as it was proposed by Gambardella and Dorigo in \cite{Gambardella}. As all the ACO algorithms it uses the notion of solution construction biasing by means of pheromone trails, deposited by ants. The high-level outline of HAS-QAP is shown in Figure \ref{lst:has-qap}. It was implemented in two versions - with Rank-based Ant System and Elitist Ant System as different pheromone trail update techniques.
+In the literature many different methods are proposed and researched including various implementations of the simulated annealing, taboo search, hybrid genetic-taboo search. However, for this project an algorithm known as Hybrid Ant System for the Quadratic Assignment Problem (HAS-QAP) was used as it was proposed by Gambardella and Dorigo in \cite{Gambardella}. As all the ACO algorithms it uses the notion of solution construction biasing by means of pheromone trails, deposited by ants. The high-level outline of HAS-QAP is shown in Figure \ref{lst:has-qap}. It was implemented in two versions - with Rank-based Ant System (RAS) and Elitist Ant System (EAS) as different pheromone trail update techniques.
 
 Let $n$ be the number of facilities/locations, i.e. the size of a problem. Every solution of a QAP problem is a permutation $\psi$ of an integer sequence from $1$ to $n$.
 
@@ -102,14 +102,13 @@ Is used in the initializing section of the algorithm. Generate $m$ random soluti
 
 \subsection{Local Search}
 
-The implemented local search is based on sequential random check of all pairs $i$ and $j$ and performing swaps of location between the i-th and j-th facilities, in case if these swaps are profitable. For this we compute the difference of objective values before the swap and after $\Delta$. Instead of full objective value recomputation in $O(n^2)$, one can compute $\Delta$ value in an optimized $O(n)$ way.
+We implemented the same local search that is described in the paper. The implemented local search is based on sequential random check of all pairs $i$ and $j$ and performing swaps of location between the $i$-th and $j$-th facilities, in case if these swaps are profitable. For this we compute the difference of objective values before the swap and after $\Delta$. Instead of full objective value recomputation in $O(n^2)$, one can compute $\Delta$ value in an optimized $O(n)$ way as in Formula \ref{eq:delta}.
 
-
-\begin{align*}
+\begin{multline}
 \Delta(\psi,i,j) = (b_{ij} - b_{ji}) \times (a_{\pi_i\pi_j} - a_{\pi_j\pi_i}) + \sum_{k = 1}^{n} [b_{ik} \times (a_{\pi_i\pi_k} - a_{\pi_j\pi_k}) \\+ b_{ki} \times (a_{\pi_k\pi_i} - a_{\pi_k\pi_j}) 
  + b_{jk} \times (a_{\pi_j\pi_k} - a_{\pi_i\pi_k}) + b_{kj} \times (a_{\pi_k\pi_j} - a_{\pi_k\pi_i})]
 \label{eq:delta}
-\end{align*}
+\end{multline}
 
 \begin{minipage}[c]{0.95\textwidth}
 \begin{lstlisting}[caption={Local Search pseudo-code}, label={lst:local-search},mathescape]
@@ -129,6 +128,87 @@ while ($|I| < n$)
 end
 \end{lstlisting}
 \end{minipage}
+
+Thus, this local search allows only improving moves and leads to high intensification. The total local search complexity is $O(n^3)$.
+
+\subsection{Pheromone trail swaps}
+
+Pheromone trail value $\tau_{ij}$ is assigned to every pair of facility $i$ and location $j$. The more this value is, the more strongly the algorithm will try to bias to assigning the facility $i$ to the location $j$.
+
+Pheromone trail swaps are applied on each iteration for each solution. These swaps have two policies - exploring and exploiting. For a given solution, an exploiting policy is applied with probability $q$. This parameter is the key parameter that defines the trade-off between exploiting and exploring.
+
+In exploiting policy, a random facility $r$ is chosen. Then a facility $s$ is chosen, in such way, that the value $\tau_{r\pi_s}^k + \tau_{s\pi_r}^k$ is maximized. This procedure is repeated $n$ times. 
+
+In exploring policy, once again facility $r$ is chosen randomly uniformly. The facility $s$ is chosen according to a stochastic rule where the probability of choosing a facility is determined by Formula \ref{eq:explorative}.
+
+\begin{equation}
+P(s) = \frac{\tau_{r\pi_s}^k + \tau_{s\pi_r}^k}{\sum_{j \ne r} (\tau_{r\pi_j}^k + \tau_{j\pi_r}^k)}
+\label{eq:explorative}
+\end{equation}
+
+\subsection{Intensification}
+
+This tool defines whether only strictly improving solutions will remain or one injects some exploration by allowing solutions, that are not the best. Initially it is activated. It is deactivated if the solutions did not a single solution changed during the current iterations, which implies that the state of stagnation was achieved. It is activated if a new best solutions was found. It corresponds to escaping a search space peak.
+
+\subsection{Pheromone update}
+
+As it was said RAS and EAS were implemented. In both of them the new pheromone trail values are defined as in Formula \ref{eq:pheromone-general}.
+
+\begin{equation}
+\tau(i+1) = (1-\rho) \times \tau(i) + \Delta\tau(i)
+\label{eq:pheromone-general}
+\end{equation}
+
+In RAS the update is done according to Formulas \ref{eq:ras1}, \ref{eq:ras2}, \ref{eq:ras3}. The idea of the RAS is to deposit pheromones according to their rank in the sorted set of all solutions and also to the best solution.
+
+\begin{equation}
+\Delta\tau_{ij} = \sum_{r=1}^{w-1} (w-r) \times \Delta \tau_{ij}^r + w \times \Delta \tau_{ij}^{bs}
+\label{eq:ras1}
+\end{equation}
+
+\begin{equation}
+\Delta\tau_{ij}^r = \begin{cases}
+    \frac{1}{L^r} \text{ if arc(i,j)} \in S\\
+    0 \text{ otherwise}
+  \end{cases}
+\label{eq:ras2}
+\end{equation}
+
+\begin{equation}
+\Delta\tau_{ij}^{bs} = \begin{cases}
+    \frac{1}{L^{bs}} \text{ if arc(i,j)} \in S^{bs}\\
+    0 \text{ otherwise}
+  \end{cases}
+\label{eq:ras3}
+\end{equation}
+
+, where $w$ - is the number of depositing ants.
+$S$ - current solution.
+$S^{bs}$ - best solution found so far.
+
+In EAS the update is done according to Formulas \ref{eq:eas1}, \ref{eq:eas2}. The aim of this pheromone update is to deposit much larger amount pheromones to the best solution.
+
+\begin{equation}
+\Delta\tau_{ij} = \sum_{k=1}^{m} \Delta \tau_{ij}^k + e \times \Delta\tau_{ij}^{bs}
+\label{eq:eas1}
+\end{equation}
+
+\begin{equation}
+\Delta\tau_{ij}^{bs} = \begin{cases}
+    \frac{1}{L^{bs}} \text{ if arc(i,j)} \in S^{bs}\\
+    0 \text{ otherwise}
+  \end{cases}
+\label{eq:eas2}
+\end{equation}
+
+\subsection{Diversification}
+
+Diversification is the same reset of pheromone trail values as in the initialization. The only difference is that the best solution quality found must be corrected. The pheromone trail values that is set is computed by Formula \ref{eq:tau0}.
+
+\begin{equation}
+\tau_0=\frac{1}{f(S^{bs})}
+\label{eq:tau0}
+\end{equation}
 
 \bibliographystyle{plain}
 \bibliography{ref}
