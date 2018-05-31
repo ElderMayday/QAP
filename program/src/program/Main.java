@@ -27,6 +27,8 @@ public class Main
      */
     public static void main(String[] args)
     {
+        Locale.setDefault(Locale.US);
+
         if (!args[0].equals("--experiments"))  // irace or custom mode
             run(args, true);
         else                                   // experimental series
