@@ -14,9 +14,11 @@ public class SolverEAS extends Solver
     protected int numberOfElitist;   // a.k.a. sigma
 
     public SolverEAS(Problem problem, int antNum, double evaporationRemains, LocalSearch localSearch,
-                     double probabilityBestInModification, double selectionPower, int numberOfElitist, int roundsToReinitialize, double factorQ)
+                     double probabilityBestInModification, double selectionPower, int numberOfElitist,
+                     int roundsToReinitialize, double factorQ, boolean mustOutputBestUpdate)
     {
-        super(problem, antNum, evaporationRemains, localSearch, roundsToReinitialize, probabilityBestInModification, selectionPower, factorQ);
+        super(problem, antNum, evaporationRemains, localSearch, roundsToReinitialize,
+                probabilityBestInModification, selectionPower, factorQ, mustOutputBestUpdate);
 
         if (numberOfElitist < 1)
             throw new IllegalArgumentException("Wrong number of elitist ants");

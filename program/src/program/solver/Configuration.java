@@ -11,7 +11,7 @@ public class Configuration
     public int seed;
     public String path = null;
     public String outputPath = null;
-
+    public boolean mustOutputBestUpdate = false;
 
     public int localSearch = -1;                 // 0 - None, 1 - LocalSearchIdsia
     public int algorithm = -1;                   // 0 - EAS, 1 - RAS
@@ -61,6 +61,14 @@ public class Configuration
                 path = args[index + 1];
 
                 index += 2;
+                continue;
+            }
+
+            if (args[index].equals("--best"))  // output the updates of the best value
+            {
+                this.mustOutputBestUpdate = true;
+
+                index++;
                 continue;
             }
 

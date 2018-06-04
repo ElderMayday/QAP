@@ -26,8 +26,10 @@ public abstract class Solver
     protected final double selectionPower;                // a.k.a. k
     protected final double factorQ;                       // a.k.a. Q
 
+    protected final boolean mustOutputBestUpdate;
+
     public Solver(Problem problem, int antNum, double evaporationRemains, LocalSearch localSearch, int roundsToReinitialize,
-                  double probabilityBestInModification, double selectionPower, double factorQ)
+                  double probabilityBestInModification, double selectionPower, double factorQ, boolean mustOutputBestUpdate)
     {
         if (problem == null)
             throw new IllegalArgumentException("Problem must be specified");
@@ -68,6 +70,8 @@ public abstract class Solver
             throw new IllegalArgumentException("Q must be positive");
 
         this.factorQ = factorQ;
+
+        this.mustOutputBestUpdate = mustOutputBestUpdate;
     }
 
 
@@ -93,11 +97,16 @@ public abstract class Solver
 
         Solution best = Solution.chooseBestInList(solutions);   // global best (among all iterations)
 
+        if (mustOutputBestUpdate)
+            System.out.println("1:" + best.objective);
+
         pheromoneMap.initialize(problem.size, 1.0 / best.objective);
 
         boolean intensificationIsActivated = true;
 
-        int count = roundsToReinitialize;
+        int countToDiversify = roundsToReinitialize; // how many round are left before the next diversification
+
+        long round = 2; // number of rounds (evaluations passed)
 
         while (System.currentTimeMillis() - startTime < runtime)  // until runtime is not finished
         {
@@ -118,8 +127,6 @@ public abstract class Solver
                 for (Solution solution : newSolutions)
                     modifySolution(solution);              // pi^
             }
-
-
 
             if (intensificationIsActivated)  // intensify
             {
@@ -152,17 +159,22 @@ public abstract class Solver
             {
                 best = newBest;
                 intensificationIsActivated = true;
-                count = roundsToReinitialize;        // postpone the diversification
+                countToDiversify = roundsToReinitialize;        // postpone the diversification
+
+                if (mustOutputBestUpdate)
+                    System.out.println(round + ":" + best.objective);
+
                 //System.out.println(best.objective);
             }
 
             updateMatrix(solutions, best);
 
-            count--;
-            if (count <= 0)  // apply diversification if got stuck for a long time
+            countToDiversify--;
+            round++;
+            if (countToDiversify <= 0)  // apply diversification if got stuck for a long time
             {
                 pheromoneMap.initialize(problem.size, 1.0 / best.objective);
-                count = roundsToReinitialize;
+                countToDiversify = roundsToReinitialize;
                 //System.out.println("diversify");
             }
         }

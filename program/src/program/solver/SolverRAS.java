@@ -18,9 +18,11 @@ public class SolverRAS extends Solver
 
 
     public SolverRAS(Problem problem, int antNum, double evaporationRemains, LocalSearch localSearch,
-                     double probabilityBestInModification, double selectionPower, int numberOfDepositing, int roundsToReinitialize, double factorQ)
+                     double probabilityBestInModification, double selectionPower, int numberOfDepositing,
+                     int roundsToReinitialize, double factorQ, boolean mustOutputBestUpdate)
     {
-        super(problem, antNum, evaporationRemains, localSearch, roundsToReinitialize, probabilityBestInModification, selectionPower, factorQ);
+        super(problem, antNum, evaporationRemains, localSearch, roundsToReinitialize,
+                probabilityBestInModification, selectionPower, factorQ, mustOutputBestUpdate);
 
         if ((numberOfDepositing < 0) || (numberOfDepositing > antNum))
             throw new IllegalArgumentException("Wrong number of depositing ants");

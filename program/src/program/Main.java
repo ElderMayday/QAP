@@ -20,6 +20,14 @@ public class Main
 {
     public static Random random = new Random(10);
 
+    protected static String configurationEasNols = "--local-search-none --eas --m 24 --rho 0.97 --rounds-reinitialize 8693 --q 0.61 --k 0.29 --Q 2.34 --sigma 54 --end";
+    protected static String configurationRasNols = "--local-search-none --ras --m 70 --rho 0.38 --rounds-reinitialize 2128 --q 0.28 --k 0.64 --Q 3.2 --w 13 --end";
+    protected static String configurationEasLsNotTuned = "--local-search-idsia --eas --m 24 --rho 0.97 --rounds-reinitialize 8693 --q 0.61 --k 0.29 --Q 2.34 --sigma 54 --end";
+    protected static String configurationRasLsNotTuned = "--local-search-idsia --ras --m 70 --rho 0.38 --rounds-reinitialize 2128 --q 0.28 --k 0.64 --Q 3.2 --w 13 --end";
+    protected static String configurationEasLsTuned = "--local-search-idsia --eas --m 85 --rho 0.32 --rounds-reinitialize 8672 --q 0.42 --k 2.09 --Q 3.6 --sigma 54 --end";
+    protected static String configurationRasLsTuned = "--local-search-idsia --ras --m 88 --rho 0.83 --rounds-reinitialize 8474 --q 0.67 --k 1.01 --Q 1.68 --w 15 --end";
+
+    protected static String folderPath = "QAP_instances/";
 
     /**
      * Performs one run on an instance with the configuration provided in the arguments or experimental series
@@ -29,10 +37,45 @@ public class Main
     {
         Locale.setDefault(Locale.US);
 
-        if (!args[0].equals("--experiments"))  // irace or custom mode
+        if (!args[0].equals("--experiments") && !args[0].equals("--convergence"))  // irace or custom mode
             run(args, true);
-        else                                   // experimental series
+        else if (args[0].equals("--convergence"))       // convergence series
+            convergence();
+        else                                            // experimental series
             experiments();
+    }
+
+
+    public static void convergence()
+    {
+        String instancePath = folderPath + "chr15b.dat";
+
+        List<String> configurations = new ArrayList<String>();
+
+        // without local search
+        configurations.add(configurationEasNols);
+        configurations.add(configurationRasNols);
+
+        // with local search (not tuned)
+        configurations.add(configurationEasLsNotTuned);
+        configurations.add(configurationRasLsNotTuned);
+
+        // with local search (tuned)
+        configurations.add(configurationEasLsTuned);
+        configurations.add(configurationRasLsTuned);
+
+        int seed = 1;
+
+        for (String configuration : configurations)
+        {
+            System.out.println(configuration);
+
+            String argumentsString = "configuration instance " + seed + " " + instancePath + " --best " + configuration;
+
+            String arguments[] = argumentsString.split(" ");
+
+            Main.run(arguments, false);
+        }
     }
 
     // performs 10 runs per each instance per each predefined configuration
@@ -45,21 +88,19 @@ public class Main
                 "had20.dat", "nug28.dat", "scr12.dat",
                 "tai17a.dat", "tai35a.dat", "wil50.dat");
 
-        String folderPath = "QAP_instances/";
-
         List<String> configurations = new ArrayList<String>();
 
         // without local search
-        configurations.add("--local-search-none --eas --m 24 --rho 0.97 --rounds-reinitialize 8693 --q 0.61 --k 0.29 --Q 2.34 --sigma 54 --end");
-        configurations.add("--local-search-none --ras --m 70 --rho 0.38 --rounds-reinitialize 2128 --q 0.28 --k 0.64 --Q 3.2 --w 13 --end");
+        configurations.add(configurationEasNols);
+        configurations.add(configurationRasNols);
 
         // with local search (not tuned)
-        configurations.add("--local-search-idsia --eas --m 24 --rho 0.97 --rounds-reinitialize 8693 --q 0.61 --k 0.29 --Q 2.34 --sigma 54 --end");
-        configurations.add("--local-search-idsia --ras --m 70 --rho 0.38 --rounds-reinitialize 2128 --q 0.28 --k 0.64 --Q 3.2 --w 13 --end");
+        configurations.add(configurationEasLsNotTuned);
+        configurations.add(configurationRasLsNotTuned);
 
         // with local search (tuned)
-        configurations.add("--local-search-idsia --eas --m 85 --rho 0.32 --rounds-reinitialize 8672 --q 0.42 --k 2.09 --Q 3.6 --sigma 54 --end");
-        configurations.add("--local-search-idsia --ras --m 88 --rho 0.83 --rounds-reinitialize 8474 --q 0.67 --k 1.01 --Q 1.68 --w 15 --end");
+        configurations.add(configurationEasLsTuned);
+        configurations.add(configurationRasLsTuned);
 
 
         for (String configuration : configurations)
@@ -177,11 +218,11 @@ public class Main
         if (conf.algorithm == 0)   // define the algorithm
             solver = new SolverEAS(problem, conf.antNum, conf.evaporationRemains, localSearch,
                     conf.probabilityBestInModification, conf.selectionPower, conf.numberOfElitist,
-                    conf.roundsToReinitialize, conf.factorQ);
+                    conf.roundsToReinitialize, conf.factorQ, conf.mustOutputBestUpdate);
         else
             solver = new SolverRAS(problem, conf.antNum, conf.evaporationRemains, localSearch,
                     conf.probabilityBestInModification, conf.selectionPower, conf.numberOfDepositing,
-                    conf.roundsToReinitialize, conf.factorQ);
+                    conf.roundsToReinitialize, conf.factorQ, conf.mustOutputBestUpdate);
 
         return solver;
     }

@@ -30,7 +30,7 @@ public class TestSolverRAS
     public void testSolver()
     {
         Solver solver = new SolverRAS(problem, 5, 0.8, new LocalSearchIdsia(),
-                0.0, 2.0, 3, 1000, 1.0);
+                0.0, 2.0, 3, 1000, 1.0, false);
 
         Solution solution = null;
         try
