@@ -1,6 +1,7 @@
 package program;
 
 /**
+ * Pheromone map of squared shape n x n
  * Created by Aldar on 08-May-18.
  */
 public class PheromoneMap

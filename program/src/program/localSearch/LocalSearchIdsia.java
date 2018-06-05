@@ -12,6 +12,12 @@ import java.util.List;
  */
 public class LocalSearchIdsia extends LocalSearch
 {
+
+    /**
+     * Performs local search according to the paper "Ant Colonies for the Quadratic Assignment Problem (Gambardella)"
+     * @param solution
+     * @throws Exception
+     */
     @Override
     public void search(Solution solution) throws Exception
     {

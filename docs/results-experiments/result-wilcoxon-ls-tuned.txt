@@ -1,0 +1,12 @@
+
+Wilcoxon signed rank (paired):
+
+"EAS..LS..tuned."	"RAS..LS..tuned."
+"EAS..LS..tuned."	NA	0.352542137499713
+"RAS..LS..tuned."	NA	NA
+
+ -> Bonferroni correction:
+
+"EAS..LS..tuned."	"RAS..LS..tuned."
+"EAS..LS..tuned."	NA	0.352542137499713
+"RAS..LS..tuned."	NA	NA

@@ -75,7 +75,11 @@ public abstract class Solver
     }
 
 
-
+    /**
+     * Solves the problem with configuration specified in the constructor
+     * @return Obtained global-best solution
+     * @throws Exception
+     */
     public Solution solve() throws Exception
     {
         long startTime = System.currentTimeMillis();

@@ -1,0 +1,12 @@
+
+Wilcoxon signed rank (paired):
+
+"EAS..no.LS."	"RAS..no.LS."
+"EAS..no.LS."	NA	0.406941216918031
+"RAS..no.LS."	NA	NA
+
+ -> Bonferroni correction:
+
+"EAS..no.LS."	"RAS..no.LS."
+"EAS..no.LS."	NA	0.406941216918031
+"RAS..no.LS."	NA	NA

@@ -29,6 +29,7 @@
 \renewcommand\theadgape{\Gape[4pt]}
 \renewcommand\cellgape{\Gape[4pt]}
 
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
 
 \author{Student \textbf{Aldar Saranov (000435170 ULB)} \\ Aldar.Saranov@ulb.ac.be}
 
@@ -41,7 +42,6 @@
 \maketitle
 \newpage
 \tableofcontents
-\newpage
 
 
 % TODO
@@ -249,11 +249,128 @@ In order to make program runs more fair, we scaled the runtime of the runs. Dura
 
 \section{Experimental}
 
-10 runs were performed on each of the given instances. The results are stored in "docs/results-experiments" folder in files "min.csv", "max.csv", "average.csv" and "standard-deviation". General sheets with computed relative solution qualities are stored in the "results.xlsx" file.
+10 runs were performed on each of the given instances. The results are stored in "docs/results-experiments" folder in files "min.csv", "max.csv", "average.csv" and "standard-deviation" and also shown in Tables \ref{tbl:experiment-min} \ref{tbl:experiment-max} \ref{tbl:experiment-average} \ref{tbl:experiment-deviation}. General sheets with computed relative solution qualities and variation coefficients are stored in the "results.xlsx" file.
+
+Speaking of the both algorithms (EAS and RAS) with their 3 versions (without LS, with LS not tuned, with LS tuned), based on the obtained results one can say that the best performing algorithm is RAS (with LS tuned). The worst is RAS (without LS).
+
+\subsection{No local search}
+
+Both EAS and RAS without local search were tried on all the instances. EAS showed slightly better results with relative solution quality 3.75\%, however it also had larger variation coefficient (meaning that some concrete instances may be solved by EAS worse than by RAS).
+
+Wilcoxon-rank test indicated $p_{value} = 40.69\%$, which means that we cannot firmly reject the $H_0$ hypothesis. Means of performances of the both algorithms hypothetically can be equal.
+
+Solution convergence process is demonstrated on Figure \ref{fig:convergence-no-ls} with logarithmic scale over the evaluation axis. RAS dominates up to roughly 200 evaluation, and EAS dominates after.
+
+
+\subsection{With local search (not tuned)}
+
+\subsection{With local search (tuned)}
 
 
 \section{Appendix}
 
+\begin{figure}[H]
+  \centering
+    \includegraphics[scale=0.9]{no-ls.PNG}
+  \caption{Performance convergence for the "chr15b.dat" instance by EAS and RAS without Local Search.}
+  \label{fig:convergence-no-ls}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[scale=0.9]{ls-not-tuned.PNG}
+  \caption{Performance convergence for the "chr15b.dat" instance by EAS and RAS with Local Search (not tuned).}
+  \label{fig:convergence-ls-not-tuned}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[scale=0.9]{ls-tuned.PNG}
+  \caption{Performance convergence for the "chr15b.dat" instance by EAS and RAS with Local Search (tuned).}
+  \label{fig:convergence-ls-tuned}
+\end{figure}
+
+
+\begin{table}[H]
+\centering
+\caption{Minimum solution qualities per each algorithm per each instance computed over 10 runs}
+\label{tbl:experiment-min}
+\begin{tabular}{|l|r|r|r|r|r|r|}
+\hline
+\textbf{Instance}   & \textbf{\thead{EAS \\(no LS)}} & \textbf{\thead{RAS \\(no LS)}} & \textbf{\thead{EAS (LS,\\ not tuned)}} & \textbf{\thead{RAS (LS, \\not tuned)}} & \textbf{\thead{EAS (LS,\\ tuned)}} & \textbf{\thead{RAS (LS,\\ tuned)}} \\ \hline
+\textbf{bur26g.dat} & 9508105              & 9508105              & 9507884                      & 9507884                      & 9507884                  & 9507884                  \\ \hline
+\textbf{chr15b.dat} & 8640                 & 8640                 & 7990                         & 7990                         & 7990                     & 7990                     \\ \hline
+\textbf{esc16d.dat} & 16                   & 16                   & 16                           & 16                           & 16                       & 16                       \\ \hline
+\textbf{had14.dat}  & 2724                 & 2724                 & 2724                         & 2724                         & 2724                     & 2724                     \\ \hline
+\textbf{had20.dat}  & 6922                 & 6922                 & 6922                         & 6922                         & 6922                     & 6922                     \\ \hline
+\textbf{nug28.dat}  & 5252                 & 5280                 & 5166                         & 5166                         & 5170                     & 5166                     \\ \hline
+\textbf{scr12.dat}  & 31410                & 31410                & 31410                        & 31410                        & 31410                    & 31410                    \\ \hline
+\textbf{tai17a.dat} & 504408               & 501058               & 493662                       & 491812                       & 493662                   & 493662                   \\ \hline
+\textbf{tai35a.dat} & 2560610              & 2603248              & 2511090                      & 2513606                      & 2475022                  & 2470994                  \\ \hline
+\textbf{wil50.dat}  & 49520                & 50058                & 48990                        & 48892                        & 48896                    & 48874                    \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Maximum solution qualities per each algorithm per each instance computed over 10 runs}
+\label{tbl:experiment-max}
+\begin{tabular}{|l|r|r|r|r|r|r|}
+\hline
+\textbf{Instance}   & \textbf{\thead{EAS \\(no LS)}} & \textbf{\thead{RAS \\(no LS)}} & \textbf{\thead{EAS (LS,\\ not tuned)}} & \textbf{\thead{RAS (LS, \\not tuned)}} & \textbf{\thead{EAS (LS,\\ tuned)}} & \textbf{\thead{RAS (LS,\\ tuned)}} \\ \hline
+\textbf{bur26g.dat} & 9549292              & 9586656              & 9508853                      & 9507884                      & 9508853                  & 9507884                  \\ \hline
+\textbf{chr15b.dat} & 11978                & 11494                & 9290                         & 8626                         & 9290                     & 9290                     \\ \hline
+\textbf{esc16d.dat} & 16                   & 16                   & 16                           & 16                           & 16                       & 16                       \\ \hline
+\textbf{had14.dat}  & 2744                 & 2744                 & 2724                         & 2724                         & 2724                     & 2724                     \\ \hline
+\textbf{had20.dat}  & 6964                 & 6972                 & 6948                         & 6922                         & 6922                     & 6948                     \\ \hline
+\textbf{nug28.dat}  & 5442                 & 5358                 & 5252                         & 5228                         & 5272                     & 5254                     \\ \hline
+\textbf{scr12.dat}  & 32996                & 32958                & 31410                        & 31410                        & 31410                    & 31410                    \\ \hline
+\textbf{tai17a.dat} & 514492               & 516242               & 499670                       & 500790                       & 501326                   & 502304                   \\ \hline
+\textbf{tai35a.dat} & 2660234              & 2680092              & 2541096                      & 2544234                      & 2504592                  & 2530968                  \\ \hline
+\textbf{wil50.dat}  & 50354                & 51168                & 49152                        & 49056                        & 49028                    & 48996                    \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Average solution qualities per each algorithm per each instance computed over 10 runs}
+\label{tbl:experiment-average}
+\begin{tabular}{|l|r|r|r|r|r|r|}
+\hline
+\textbf{Instance}   & \textbf{\thead{EAS \\(no LS)}} & \textbf{\thead{RAS \\(no LS)}} & \textbf{\thead{EAS (LS,\\ not tuned)}} & \textbf{\thead{RAS (LS, \\not tuned)}} & \textbf{\thead{EAS (LS,\\ tuned)}} & \textbf{\thead{RAS (LS,\\ tuned)}} \\ \hline
+\textbf{bur26g.dat} & 9517432              & 9527396              & 9507980                      & 9507884                      & 9508174                  & 9507884                  \\ \hline
+\textbf{chr15b.dat} & 10227                & 10093                & 8532                         & 8371                         & 8854                     & 8512                     \\ \hline
+\textbf{esc16d.dat} & 16                   & 16                   & 16                           & 16                           & 16                       & 16                       \\ \hline
+\textbf{had14.dat}  & 2730                 & 2734                 & 2724                         & 2724                         & 2724                     & 2724                     \\ \hline
+\textbf{had20.dat}  & 6931                 & 6942                 & 6927                         & 6922                         & 6922                     & 6929                     \\ \hline
+\textbf{nug28.dat}  & 5312                 & 5318                 & 5201                         & 5199                         & 5215                     & 5207                     \\ \hline
+\textbf{scr12.dat}  & 32202                & 32123                & 31410                        & 31410                        & 31410                    & 31410                    \\ \hline
+\textbf{tai17a.dat} & 510175               & 509739               & 495976                       & 496344                       & 498228                   & 497675                   \\ \hline
+\textbf{tai35a.dat} & 2614268              & 2642542              & 2529051                      & 2532861                      & 2484877                  & 2488667                  \\ \hline
+\textbf{wil50.dat}  & 49967                & 50503                & 49067                        & 48939                        & 48952                    & 48924                    \\ \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\caption{Standard deviations of solution qualities per each algorithm per each instance computed over 10 runs}
+\label{tbl:experiment-deviation}
+\begin{tabular}{|l|r|r|r|r|r|r|}
+\hline
+\textbf{Instance}   & \textbf{\thead{EAS \\(no LS)}} & \textbf{\thead{RAS \\(no LS)}} & \textbf{\thead{EAS (LS,\\ not tuned)}} & \textbf{\thead{RAS (LS, \\not tuned)}} & \textbf{\thead{EAS (LS,\\ tuned)}} & \textbf{\thead{RAS (LS,\\ tuned)}} \\ \hline
+\textbf{bur26g.dat} & 16737.45             & 28934.45             & 306.43                       & 0                            & 468.07                   & 0                        \\ \hline
+\textbf{chr15b.dat} & 1122.67              & 996.02               & 430.1                        & 328.43                       & 378.98                   & 495.72                   \\ \hline
+\textbf{esc16d.dat} & 0                    & 0                    & 0                            & 0                            & 0                        & 0                        \\ \hline
+\textbf{had14.dat}  & 9.66                 & 10.54                & 0                            & 0                            & 0                        & 0                        \\ \hline
+\textbf{had20.dat}  & 14.34                & 18.4                 & 10.96                        & 0                            & 0                        & 12.59                    \\ \hline
+\textbf{nug28.dat}  & 62.71                & 27.65                & 27.44                        & 18.36                        & 29.89                    & 28                       \\ \hline
+\textbf{scr12.dat}  & 600.72               & 582.08               & 0                            & 0                            & 0                        & 0                        \\ \hline
+\textbf{tai17a.dat} & 3286.57              & 4681.04              & 2334.31                      & 2780.92                      & 2286.86                  & 2986.83                  \\ \hline
+\textbf{tai35a.dat} & 30049.49             & 24688.77             & 9590.59                      & 9326.62                      & 10462.45                 & 20092.04                 \\ \hline
+\textbf{wil50.dat}  & 259.73               & 323.45               & 53.97                        & 45.09                        & 44.47                    & 43.72                    \\ \hline
+\end{tabular}
+\end{table}
 
 
 \bibliographystyle{plain}
