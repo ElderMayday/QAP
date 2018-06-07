@@ -1,13 +1,14 @@
 \contentsline {section}{\numberline {1}Program implementation}{2}{section.1}
 \contentsline {subsection}{\numberline {1.1}Random solution}{3}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Local Search}{4}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.2}Local Search}{3}{subsection.1.2}
 \contentsline {subsection}{\numberline {1.3}Pheromone trail swaps}{4}{subsection.1.3}
 \contentsline {subsection}{\numberline {1.4}Intensification}{5}{subsection.1.4}
 \contentsline {subsection}{\numberline {1.5}Pheromone update}{5}{subsection.1.5}
-\contentsline {subsection}{\numberline {1.6}Diversification}{6}{subsection.1.6}
+\contentsline {subsection}{\numberline {1.6}Diversification}{5}{subsection.1.6}
 \contentsline {section}{\numberline {2}Automatic tuning}{6}{section.2}
 \contentsline {section}{\numberline {3}Experimental}{6}{section.3}
 \contentsline {subsection}{\numberline {3.1}No local search}{7}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}With local search (not tuned)}{7}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}With local search (tuned)}{7}{subsection.3.3}
-\contentsline {section}{\numberline {4}Appendix}{7}{section.4}
+\contentsline {section}{\numberline {4}Conclusion}{7}{section.4}
+\contentsline {section}{\numberline {5}Appendix}{8}{section.5}

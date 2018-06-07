@@ -50,20 +50,13 @@
 
 \section{Program implementation}
 
-In the literature many different methods are proposed and researched including various implementations of the simulated annealing, taboo search, hybrid genetic-taboo search. However, for this project an algorithm known as Hybrid Ant System for the Quadratic Assignment Problem (HAS-QAP) was used as it was proposed by Gambardella and Dorigo in \cite{Gambardella}. As all the ACO algorithms it uses the notion of solution construction biasing by means of pheromone trails, deposited by ants. The high-level outline of HAS-QAP is shown in Figure \ref{lst:has-qap}. It was implemented in two versions - with Rank-based Ant System (RAS) and Elitist Ant System (EAS) as different pheromone trail update techniques.
+\textbf{The README file is located in "program/README.txt". Implemented in Java 1.8.0}
+
+In the literature many different methods are proposed and researched including various implementations of the simulated annealing, taboo search, hybrid genetic-taboo search. However, for this project an algorithm known as Hybrid Ant System for the Quadratic Assignment Problem (HAS-QAP) was used as it was proposed by Gambardella and Dorigo in \cite{Gambardella}. As all the ACO algorithms it uses the notion of solution construction biasing by means of pheromone trails, deposited by ants. The high-level outline of HAS-QAP is shown in Listing \ref{lst:has-qap}. It was implemented in two versions - with Rank-based Ant System (RAS) and Elitist Ant System (EAS) as different pheromone trail update techniques.
 
 Let $n$ be the number of facilities/locations, i.e. the size of a problem. Every solution of a QAP problem is a permutation $\psi$ of an integer sequence from $1$ to $n$.
 
-The HAS-QAP includes such components as:
-
-\begin{itemize}
-\item Random solution generation
-\item Local Search
-\item Pheromone trail swaps
-\item Intensification
-\item Pheromone update
-\item Diversification
-\end{itemize}
+Some micro-optimization were applied to the original version of HAS-QAP such as reorganizing conditional branches. For example, we extracted the conditional block on the line 15 outside the loop to avoid redundant condition checks.
 
 
 \begin{minipage}[c]{0.95\textwidth}
@@ -103,8 +96,6 @@ end
 \end{lstlisting}
 \end{minipage}
 
-
-Some micro-optimization were applied to the original version of HAS-QAP such as reorganizing conditional branches. For example, we extracted the conditional block on the line 15 outside the loop to avoid redundant condition checks.
 
 \subsection{Random solution}
 Is used in the initializing section of the algorithm. Generate $m$ random solutions. In out implementation, the algorithm takes the facilities one by one and assigns it to one of the free locations according to random uniform rule. This is an exploration step.
@@ -249,43 +240,62 @@ In order to make program runs more fair, we scaled the runtime of the runs. Dura
 
 \section{Experimental}
 
+
 10 runs were performed on each of the given instances. The results are stored in "docs/results-experiments" folder in files "min.csv", "max.csv", "average.csv" and "standard-deviation" and also shown in Tables \ref{tbl:experiment-min} \ref{tbl:experiment-max} \ref{tbl:experiment-average} \ref{tbl:experiment-deviation}. General sheets with computed relative solution qualities and variation coefficients are stored in the "results.xlsx" file.
 
 Speaking of the both algorithms (EAS and RAS) with their 3 versions (without LS, with LS not tuned, with LS tuned), based on the obtained results one can say that the best performing algorithm is RAS (with LS tuned). The worst is RAS (without LS).
 
+The convergence of the algorithms over the number of evaluations is also tested and results are stored in "docs/results-convergence".
+
 \subsection{No local search}
 
-Both EAS and RAS without local search were tried on all the instances. EAS showed slightly better results with relative solution quality 3.75\%, however it also had larger variation coefficient (meaning that some concrete instances may be solved by EAS worse than by RAS).
+Both EAS and RAS without local search were tried on all the instances. The tuned configurations were used. EAS showed slightly better results with average relative solution quality 3.75\%, however it also had larger variation coefficient (meaning that some concrete instances may be solved by EAS worse than by RAS).
 
 Wilcoxon-rank test indicated $p_{value} = 40.69\%$, which means that we cannot firmly reject the $H_0$ hypothesis. Means of performances of the both algorithms hypothetically can be equal.
 
 Solution convergence process is demonstrated on Figure \ref{fig:convergence-no-ls} with logarithmic scale over the evaluation axis. RAS dominates up to roughly 200 evaluation, and EAS dominates after.
 
-
 \subsection{With local search (not tuned)}
+
+The previously described local search is included in the next series of experiments. The configurations, however, were inherited from the previous series. RAS showed much better results with average relative solution quality 0.2\% and best quality 0.17\%. There is a significant improvement for both EAS and RAS if local search is added.
+
+Wilcoxon-rank test indicated $p_{value} = 93.26\%$, which means that we cannot firmly reject the $H_0$ hypothesis. Means of performances of the both algorithms hypothetically can be equal.
+
+Solution convergence process is demonstrated on Figure \ref{fig:convergence-ls-not-tuned}. Almost always RAS dominates over EAS.
 
 \subsection{With local search (tuned)}
 
+In these series we will apply automatic configuration for the EAS and RAS algorithms with local search. Some parameters changed. Selection power $k$ increased for both EAS and RAS. The number of ants $m$ also increased.
+
+The results here are ambiguous, because the average relative quality of RAS is equal to $0.24\%$ which is better than $0.66\%$ of EAS, however, in the worst case EAS has $0.89\%$, whereas RAS has $1.01\%$.
+
+Wilcoxon-rank test indicated $p_{value} = 35.25\%$, which means that we cannot firmly reject the $H_0$ hypothesis. However, in this case the $p_{value}$ is the lowest among all experimental series.
+
+Solution convergence process is demonstrated on Figure \ref{fig:convergence-ls-tuned}. Once again there is no a clear winner, but RAS is likely to have better performance during long runs.
+
+\section{Conclusion}
+
+We successfully implemented the specified algorithms. We concluded that the best algorithms to use is RAS with the tuned configuration that we obtained. We compared the convergence behavior of the algorithms, and performed general benchmark comparison thereof. We also adapted the program for tuning via the irace software and performed the configuration tuning. We also added local search that significantly improved the performance.
 
 \section{Appendix}
 
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.9]{no-ls.PNG}
+    \includegraphics[scale=0.56]{no-ls.PNG}
   \caption{Performance convergence for the "chr15b.dat" instance by EAS and RAS without Local Search.}
   \label{fig:convergence-no-ls}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.9]{ls-not-tuned.PNG}
+    \includegraphics[scale=0.56]{ls-not-tuned.PNG}
   \caption{Performance convergence for the "chr15b.dat" instance by EAS and RAS with Local Search (not tuned).}
   \label{fig:convergence-ls-not-tuned}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.9]{ls-tuned.PNG}
+    \includegraphics[scale=0.56]{ls-tuned.PNG}
   \caption{Performance convergence for the "chr15b.dat" instance by EAS and RAS with Local Search (tuned).}
   \label{fig:convergence-ls-tuned}
 \end{figure}
